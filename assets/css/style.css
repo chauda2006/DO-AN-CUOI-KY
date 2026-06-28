@@ -1,23 +1,9 @@
 body {
-    background: linear-gradient(135deg, #000, #222);
+    background: black;
     color: white;
     text-align: center;
-    font-family: Arial;
 }
 
 h1 {
     color: cyan;
-    margin-top: 50px;
-}
-
-p {
-    color: #ccc;
-}
-
-button {
-    padding: 10px 20px;
-    background: cyan;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
 }
