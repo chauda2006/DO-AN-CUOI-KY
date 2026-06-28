@@ -1,9 +1,270 @@
 body {
-    background: black;
-    color: white;
-    text-align: center;
+  margin: 0;
 }
 
-h1 {
-    color: cyan;
+/* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}*/
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #073c52ae;/* tô màu menu*/
+
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1000;
+
+    box-shadow: /* tăng độ sáng thanh menu*/
+        0 0 15px #00d4ff,
+        0 0 30px #00d4ff,
+        0 0 60px #00d4ff;
+}
+
+
+
+
+/* phần logo===================================================== */
+.logo {
+    display: flex;
+    flex-direction: column; /* xếp dọc cho chữ " trang chủ" */
+    align-items: center;/* căn giữa xếp dọc cho chữ " trang chủ" */
+    text-decoration: none;/* xóa gạch chân thẻ liên kết <a> cho chữ " trang chủ" */
+}
+
+/* logo */
+.logo img {
+    width: 80px;/* lớn nhỏ của*/
+    height: auto;
+
+    filter: drop-shadow(0 0 10px #00d4ff);/* phát sáng logo*/
+}
+
+/* chữ dưới */
+.logo-text {
+    color: #ffffff;/* màu chữ trang chủ dưới logo*/
+    font-size: 14px;/* cỡ chữ trang chủ logo*/
+    margin-top: 5px;/*độ thấp chữ sov logo*/
+
+    text-shadow: /* phát sáng chữ trang chủ*/
+        0 0 5px #00d4ff,
+        0 0 10px #00d4ff;
+}
+.logo{
+    position: fixed;/* ghim cố định vô màn hình ko cuốn theo khi kéo trang*/
+    top: 20px;
+    left: 20px;
+
+    z-index: 1000;/* nằm trên cùng*/
+}
+
+
+/* menu ========================================================*/
+nav {
+    margin-left: auto; /* đẩy menu sang phải */
+}
+
+.menu {
+    list-style: none;/* Xóa bỏ các dấu chấm tròn*/
+    display: flex !important; /* ép luôn cho chắc */
+    gap: 20px;/*Tạo khoảng cách đều nhau 20px giữa các mục để chúng không dính sát vào nhau*/
+}
+
+.menu li a {
+    color: white;/* màu chue cho menu*/
+    text-decoration: none;/* xóa gạch chan*/
+    transition: 0.4s;/* nhanh chậm khi tiếp xúc v út kiểu đổi màu khi chạm vô*/
+}
+
+.menu li a:hover {/* màu khi chạm vô*/
+    color: #00d4ff;
+    text-shadow: 
+        0 0 5px #00d4ff,
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff;
+}
+
+
+/* phần background của trang chủ===========================*/
+*{
+    margin:0;/* xóa kc ngoai*/
+    padding:0;/*x kc trong*/
+    box-sizing:border-box;/* cố định kích thước này kia của videp nền*/
+}
+
+html{
+    scroll-behavior:smooth;/* tạo cuộn mượt hơn*/
+}
+
+#bg-video{
+    position:fixed;/* ghim cố định */
+    top:0;
+    left:0;
+
+    width:100vw;/* ép kích thước chiều rộng 100*/
+    height:100vh;/* ép kích thước chiều caao*/
+
+    object-fit:cover;/* giữ nguyên tỷ lệ vidoe*/
+
+    z-index:-2;
+}
+
+body::after{
+    content:"";/* Bắt buộc phải có để kích hoạt phần tử ảo này hoạt động (để trống nội dung bên trong*/
+    position:fixed;
+    inset:0;/*Ghim cố định và kéo dãn lớp màng này phủ*/
+
+    background:rgba(2, 2, 2, 0.618);
+
+    z-index:-1;
+}
+
+.stars{
+    position:fixed;/* Ghim cố định khung này trên màn hình khi cuộn trang */
+    inset:0; /* Kéo dãn khung phủ kín cả 4 cạnh màn hình */
+
+    width:100%;/* Chiều rộng bằng 100% màn hình */
+    height:200%;/* Chiều cao gấp đôi màn hình (để chuẩn bị làm hiệu ứng cuộn hoặc trượt nền) */
+
+    background:url("https://www.transparenttextures.com/patterns/dark-matter.png");/* Chèn ảnh các bong bóng lặp lại làm nền */
+
+    z-index:0;
+}
+
+.stars1{/* Lớp bb: Sáng nhất, chuyển động nhanh nhất (nằm gần mắt người xem nhất) */
+    animation:
+        moveStars 50s linear infinite,/* Chạy hiệu ứng trượt "moveStars" trong 50 giây, tốc độ đều, lặp vô hạn */
+        twinkle 2s infinite alternate;/* Chạy hiệu ứng nhấp nháy "twinkle" trong 2 giây, lặp vô hạn, đổi chiều liên tục */
+}
+
+.stars2{
+    opacity:.5;/* Giảm độ sáng của lớp bb thứ hai xuống còn 50% để tạo độ xa */
+
+    animation:
+        moveStars 100s linear infinite,/* Hiệu ứng trượt chậm hơn (100 giây), tốc độ đều, lặp vô hạn */
+        twinkle 3s infinite alternate;/* Hiệu ứng nhấp nháy chậm hơn (3 giây), lặp vô hạn, đổi chiều liên tục */
+}
+
+.stars3{
+    opacity:.3;/* Giảm độ sáng của lớp sao thứ ba xuống còn 30% để tạo cảm giác rất xa */
+
+    animation:
+        moveStars 150s linear infinite,
+        twinkle 4s infinite alternate;
+}
+
+@keyframes moveStars{
+    from{
+        transform:translateY(0);/* Trạng thái bắt đầu: Các bb ở vị trí mặc định */
+    }
+
+    to{
+        transform:translateY(-2000px);/* Trạng thái kết thúc: Đẩy toàn bộ lớp bb trượt thẳng lên trên 2000px */
+    }
+}
+
+@keyframes twinkle{
+    from{
+        opacity:.3;
+    }  /* Trạng thái bắt đầu: Các ngôi sao hơi mờ đi (độ sáng 30%) */
+
+    to{
+        opacity:1;
+    }
+}
+.footer{
+    background: rgba(0,0,0,0.8);
+    color: rgb(224, 207, 207);
+    padding: 30px;
+    margin-top: 50px;
+
+    display: flex;/* Kích hoạt chế độ Flexbox để dàn trang các khối con */
+    justify-content: space-around;/* Căn đều các khối con, tạo khoảng trống xung quanh chúng */
+    flex-wrap: wrap;/*Tự động xuống dòng các khối con nếu màn hình bị thu nhỏ (responsive) */
+    position: relative;
+    z-index: 9999;
+}
+.footer{
+    width: 100%;
+    background: rgba(0,0,0,0.75);
+
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    padding: 50px 30px;/* kc trong*/
+    margin-top: 80px;/*kc ngoài*/
+
+    border-top: 3px solid rgb(10, 208, 239);/*Tạo một đường viền dày 3px màu xanh neon chổ phàn địa chri email */
+    
+}
+
+.footer-box{
+    width: 450px;/* dộ dài khung nè đen đen chổ phần địa chỉ*/
+    color: white;/* màu chữ bên trong của pphaanf địa chỉ này kia trường */
+}
+
+.footer-box h2{
+    color: rgb(255, 255, 255);
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px rgb(0, 157, 255); /* Tạo hiệu ứng chữ phát sáng màu xanh neon rộng 10px */
+
+}
+
+.footer-box p{
+    margin: 18px 0;/* khoảng cách dòng của emial*/
+    font-size: 18px;
+}
+
+.footer-box a{
+    color: #00bdde;/* chữ bên phần liên kết */
+    text-decoration: none;
+    transition: .3s;
+}
+
+.footer-box a:hover{
+    color: white;/* màu khi nhấn vo*/
+    text-shadow: 0 0 10px cyan;
+    padding-left: 8px;
+}
+/* phần nọi dung trang chủ======================================*/
+.content,
+.section{
+    height:100vh;/* căn cho đẹp chữ*/
+
+    display:flex;
+    justify-content:center;
+    align-items:center;/* CĂN GIỮA*/
+    flex-direction:column;/* xếp doc*/
+
+    text-align:center;
+
+    color:rgb(247, 243, 243);/* là chữ công nghệ xanh đại d sạch*/
+    text-shadow: 
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff,
+        0 0 40px #00d4ff,
+        0 0 80px #00d4ff;
+    font-family:Arial,sans-serif;
+    position:relative;
+    z-index:1;
+}
+.content h1 {/* CHỮ TO CHỦ ĐỀ*/
+    color: #fdffff;
+
+    text-shadow: 
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff,
+        0 0 40px #00d4ff,
+        0 0 80px #00d4ff;
+    font-family:'Poppins', sans-serif;
+    font-size: 40px;
+    font-size: 3rem;
+    margin-bottom: 50px
 }
