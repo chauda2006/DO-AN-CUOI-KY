@@ -2,6 +2,29 @@
 require 'check_admin.php';
 require '../config/database.php';
 
+$message = "";
+$error = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $title = trim($_POST["title"]);
+    $category_id = $_POST["category_id"];
+    $location = trim($_POST["location"]);
+    $price = trim($_POST["price"]);
+    $description = trim($_POST["description"]);
+
+    if (
+        $title == "" ||
+        $location == "" ||
+        $price == ""
+    ) {
+
+        $error = "Vui lòng nhập đầy đủ thông tin.";
+
+    }
+
+}
+
 /* Lấy danh sách danh mục */
 $sql = "SELECT * FROM categories";
 $stmt = $pdo->query($sql);
@@ -33,6 +56,15 @@ $categories = $stmt->fetchAll();
 </div>
 
 <div class="card-body">
+
+<!-- cảnh báo lỗi chưa nhập -->
+<?php if($error != ""): ?>
+
+<div class="alert alert-danger">
+    <?= $error ?>
+</div>
+
+<?php endif; ?>
 
 <form method="POST" enctype="multipart/form-data">
 
