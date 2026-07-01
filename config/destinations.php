@@ -1,26 +1,66 @@
 <?php
-require_once "config/database.php";
 
-echo "Kết nối Database thành công!";
-?>
-<!DOCTYPE html>
-<html lang="vi">
+require_once "database.php";
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+function getAllDestinations()
+{
+    global $pdo;
 
-    <title>Danh sách địa điểm du lịch</title>
+    $sql = "SELECT destinations.*, categories.name AS category_name
+            FROM destinations
+            LEFT JOIN categories ON destinations.category_id = categories.id
+            ORDER BY destinations.id DESC";
 
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
 
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
-    <!-- CSS của nhóm -->
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
+function getDestinationById(int $id): ?array
+{
+    global $pdo;
 
-<body>
+    $sql = "SELECT destinations.*, categories.name AS category_name
+            FROM destinations
+            LEFT JOIN categories ON destinations.category_id = categories.id
+            WHERE destinations.id = ?";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$id]);
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function getAllCategories()
+{
+    global $pdo;
+
+    $sql = "SELECT * FROM categories ORDER BY id ASC";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function searchDestinations(string $keyword): array
+{
+    global $pdo;
+
+    $sql = "SELECT destinations.*, categories.name AS category_name
+            FROM destinations
+            LEFT JOIN categories ON destinations.category_id = categories.id
+            WHERE destinations.title LIKE ?
+               OR destinations.location LIKE ?
+               OR categories.name LIKE ?
+            ORDER BY destinations.id DESC";
+
+    $stmt = $pdo->prepare($sql);
+
+    $search = "%" . $keyword . "%";
+
+    $stmt->execute([$search, $search, $search]);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

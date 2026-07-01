@@ -1,10 +1,12 @@
 <?php
+
 $host = "localhost";
 $dbname = "do_an_cuoi_ky";
 $username = "root";
 $password = "";
 
 try {
+
     $pdo = new PDO(
         "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
         $username,
@@ -13,7 +15,10 @@ try {
 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-} catch (PDOException $e) {
-    die("Lỗi kết nối database: " . $e->getMessage());
+    echo "✅ Kết nối PDO thành công!";
+
+} catch(PDOException $e){
+
+    die("❌ Lỗi kết nối: " . $e->getMessage());
+
 }
-?>
