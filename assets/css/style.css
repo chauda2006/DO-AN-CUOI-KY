@@ -46,7 +46,7 @@ body {
 
 /* ẢNH LOGO - ÉP CHẶT KÍCH THƯỚC CHUẨN CHỐNG LỖI TO KHỔNG LỒ */
 .navbar-brand img {
-    height: 48px !important;       /* Ép chiều cao cố định để navbar luôn gọn gàng */
+    height: 70px !important;       /* Ép chiều cao cố định để navbar luôn gọn gàng */
     width: auto !important;        /* Giữ nguyên tỷ lệ ảnh gốc, không móp ảnh */
     max-width: 140px !important;   /* Khống chế chiều rộng tối đa ngăn lỗi tràn viền */
     margin-right: 12px !important;
@@ -60,7 +60,7 @@ body {
 .brand-name {
     font-weight: 700 !important;
     font-size: 20px !important;
-    color: #ff66cc !important;
+    color: #67fee2 !important;
     line-height: 1.2 !important;
     display: inline-block !important;
     transition: color 0.3s ease, text-shadow 0.3s ease !important;
@@ -89,10 +89,10 @@ body {
 
 @keyframes inlineTextGlow {
     0% { 
-        text-shadow: 0 0 4px rgba(255, 102, 204, 0.5) !important; 
+        text-shadow: 0 0 4px rgba(42, 122, 70, 0.5) !important; 
     }
     100% { 
-        text-shadow: 0 0 15px #ff66cc, 0 0 25px #ffb3ec !important; 
+        text-shadow: 0 0 15px #2adb39, 0 0 25px #138352 !important; 
     }
 }
 
@@ -140,10 +140,10 @@ body {
 /* Hiệu ứng phát quang đổi sắc khi đưa chuột chạm vào chữ menu */
 .navbar-nav .nav-item .nav-link:hover,
 .navbar-nav .nav-item .nav-link.active {
-    color: #00d4ff !important;    /* Chuyển xanh ngọc biển phát sáng */
+    color: #0ae44b !important;    /* Chuyển xanh ngọc biển phát sáng */
     text-shadow: 
-        0 0 8px #00d4ff,
-        0 0 20px #00d4ff !important;
+        0 0 8px #00ff40,
+        0 0 20px hsl(171, 78%, 42%) !important;
     transform: translateY(-2px) !important; /* Nhấc chữ nhẹ lên trên */
 }
 
