@@ -26,7 +26,7 @@ body {
     left: 0;
     width: 100%;
     /* Sử dụng màu nền tối trong suốt để nổi bật chữ và đèn neon */
-    background: rgba(5, 62, 101, 0.542) !important; 
+    background: rgba(17, 184, 184, 0.632) !important; 
     padding: 10px 0 !important;
     z-index: 10000 !important;
     /* Hiệu ứng hào quang xanh cyan chạy dưới chân thanh điều hướng */
@@ -329,4 +329,189 @@ body::after {
     .footer-box {
         width: 100%;            /* Cho phép mỗi khối thông tin chiếm hết chiều rộng màn hình */
     }
+}
+
+
+
+
+
+/* ==========================================================================
+   1. ĐỊNH NGHĨA BIẾN MÀU SẮC (BẮT BUỘC ĐẶT Ở ĐẦU FILE)
+   ========================================================================== */
+
+/* ☀️ Mặc định: Chế độ sáng (Light Mode) */
+:root {
+    --bg-color: #e9e5e5;          /* Nền chính của toàn trang */
+    --text-color: #fff8f8;        /* Chữ chính (Đen đậm dễ đọc) */
+    --text-muted: #666666;        /* Chữ phụ (Xám nhạt cho ngày tháng, mô tả) */
+    
+    --navbar-bg: rgba(255, 255, 255, 0.85); /* Nền menu trong suốt nhẹ */
+    --footer-bg: #f8f9fa;         /* Nền chân trang (Xám rất nhẹ) */
+    --card-bg: #ffffff;           /* Nền các thẻ sự kiện */
+    --border-color: #e0e0e0;      /* Màu đường viền, nét kẻ */
+    
+    /* Màu sắc bổ trợ cho nút bấm phát sáng */
+    --glow-color: rgba(0, 0, 0, 0.2); 
+    --btn-hover-bg: #222222;
+    --btn-hover-text: #ffffff;
+}
+
+/* 🌙 Kích hoạt: Chế độ tối (Dark Mode) */
+[data-theme="dark"] {
+    --bg-color: #0f111a;          /* Nền tối sâu (Deep Dark Blue/Black) */
+    --text-color: #f0f2f5;        /* Chữ chính (Trắng sáng dịu mắt) */
+    --text-muted: #a0aec0;        /* Chữ phụ (Xám xanh không bị lóa) */
+    
+    --navbar-bg: rgba(15, 17, 26, 0.85); /* Nền menu tối trong suốt */
+    --footer-bg: #090b11;         /* Nền chân trang tối hơn nền chính */
+    --card-bg: #161925;           /* Nền thẻ sự kiện (Nổi bật trên nền tối) */
+    --border-color: #2d3142;      /* Đường viền tối mờ */
+    
+    /* Màu sắc bổ trợ cho nút bấm phát sáng chuyển sang hiệu ứng Neon */
+    --glow-color: rgba(255, 255, 255, 0.6); 
+    --btn-hover-bg: #ffffff;
+    --btn-hover-text: #0f111a;
+}
+
+/* ==========================================================================
+   2. ÁP DỤNG BIẾN MÀU VÀO TOÀN BỘ GIAO DIỆN
+   ========================================================================== */
+
+/* Áp dụng cho toàn bộ trang web */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Đổi màu mượt mà */
+}
+
+/* Thanh Menu Điều Hướng (Navbar) */
+.navbar {
+    background-color: var(--navbar-bg);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(10px); /* Hiệu ứng kính mờ thời thượng */
+}
+
+.menu a {
+    color: var(--text-color);
+}
+
+/* Khung tìm kiếm & Bộ lọc (Filter Box) */
+.filter-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.filter-box input, 
+.filter-box select {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+/* Khung danh sách & Thẻ sự kiện (.event-card hoặc các class card của bạn) */
+.event-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.event-card .title {
+    color: var(--text-color);
+}
+
+.event-card .date, 
+.event-card .description {
+    color: var(--text-muted); /* Chữ phụ tự động mờ đi */
+}
+
+/* Phần chân trang (Footer) */
+.footer {
+    background-color: var(--footer-bg);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+}
+
+.footer h3, .footer a {
+    color: var(--text-color);
+}
+
+
+/* ==========================================================================
+   3. CSS ĐẦY ĐỦ CHO NÚT BẤM SÁNG/TỐI (DỊCH CHUYỂN + PHÁT SÁNG)
+   ========================================================================== */
+.theme-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 2px solid var(--text-color);
+    background: transparent;
+    color: var(--text-color);
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 14px;
+    outline: none;
+    position: relative;
+    
+    /* Hiệu ứng chuyển động mượt mà khi di chuột */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Hiệu ứng khi RE CHUỘT VÀO (Hover) hoặc CHẠM TAY (Active trên điện thoại) */
+.theme-btn:hover {
+    transform: translateY(-4px); /* Dịch chuyển nút bay nhẹ lên trên */
+    background-color: var(--btn-hover-bg); /* Đổi màu nền nút */
+    color: var(--btn-hover-text);          /* Đổi màu chữ/icon bên trong nút */
+    
+    /* Tạo hiệu ứng đổ bóng phát sáng (Glow Effect) lan tỏa ra xung quanh */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 
+                0 0 15px var(--glow-color); 
+}
+
+/* Hiệu ứng khi BẤM CHUỘT XUỐNG (Click) */
+.theme-btn:active {
+    transform: translateY(-1px); /* Nút lún nhẹ xuống tạo cảm giác vật lý */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15), 
+                0 0 8px var(--glow-color);
+}
+/* ==========================================================================
+   CẤU HÌNH THANH MENU TỰ ĐỘNG THÍCH NGHI THEO CHẾ ĐỘ SÁNG / TỐI
+   ========================================================================== */
+
+/* Mặc định ở chế độ SÁNG: Thanh menu sẽ có nền TRẮNG tinh tế */
+.cafe-navbar {
+    background-color: #ffffff !important; 
+    background: #ffffff !important; /* Xóa bỏ hoàn toàn dải màu gradient xanh tối cũ */
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Tạo bóng đổ nhẹ cho sang trọng */
+    transition: all 0.3s ease-in-out; /* Hiệu ứng chuyển màu mượt mà */
+}
+
+/* Khi bấm nút chuyển sang chế độ TỐI: Thanh menu tự động chuyển sang màu ĐEN/TỐI */
+[data-theme="dark"] .cafe-navbar {
+    background-color: #161925 !important; 
+    background: #161925 !important; 
+    border-bottom: 1px solid #2d3142;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   ĐIỀU CHỈNH MÀU CHỮ MENU ĐỂ KHÔNG BỊ TÀNG HÌNH
+   ========================================================================== */
+
+/* Ở chế độ SÁNG: Chữ menu phải là màu TỐI (Xám đậm/Đen) để nổi bật trên nền trắng */
+.cafe-navbar .navbar-nav .nav-link {
+    color: #000000 !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Khi ở chế độ TỐI: Chữ menu tự động chuyển sang màu TRẮNG sáng */
+[data-theme="dark"] .cafe-navbar .navbar-nav .nav-link {
+    color: #ffffff !important;
+}
+
+/* Riêng nút đang kích hoạt (Active) hoặc khi di chuột vào (Hover) */
+.cafe-navbar .navbar-nav .nav-link:hover,
+.cafe-navbar .navbar-nav .nav-link.active {
+    color: #02fa86 !important; /* Giữ màu xanh lá làm điểm nhấn thương hiệu */
 }

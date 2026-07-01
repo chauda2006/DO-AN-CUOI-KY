@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
+    
 
 
 <link rel="stylesheet" href="assets/css/style.css?v=<?php echo filemtime('assets/css/style.css'); ?>">
@@ -45,6 +46,7 @@
         </button>
 
         <!-- Menu -->
+
         <div class="collapse navbar-collapse" id="mainMenu">
             <ul class="navbar-nav ms-auto align-items-lg-center">
                 <li class="nav-item"><a class="nav-link active" href="#">Trang chủ</a></li>
@@ -55,6 +57,9 @@
                     <a class="btn btn-success" href="#">
                         <i class="bi bi-calendar-check"></i> Đặt bàn
                     </a>
+                <!-- Đặt nút này ở nơi bạn muốn hiển thị trên thanh menu -->
+                 <button id="themeToggle" class="theme-btn">🌙 Chế độ tối</button>
+
                 </li>
             </ul>
         </div>
@@ -115,9 +120,10 @@
 
 </footer>
 
-<script src="assets/js/script.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Liên kết JavaScript tự động xóa bộ nhớ đệm khi có thay đổi code -->
+<script src="assets/js/script.js?v=<?php echo filemtime('assets/js/script.js'); ?>"></script>
+
 
 </body>
 </html>
