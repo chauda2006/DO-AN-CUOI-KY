@@ -1,12 +1,10 @@
 <?php
-
 $host = "localhost";
-$dbname = "travel_db";
+$dbname = "do_an_cuoi_ky";
 $username = "root";
 $password = "";
 
 try {
-
     $pdo = new PDO(
         "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
         $username,
@@ -15,12 +13,7 @@ try {
 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
-} catch(PDOException $e){
-
-    die("Lỗi kết nối: " . $e->getMessage());
-
+} catch (PDOException $e) {
+    die("Lỗi kết nối database: " . $e->getMessage());
 }
-
 ?>

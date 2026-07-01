@@ -1,3 +1,8 @@
+<?php
+require_once "config/database.php";
+
+echo "Kết nối Database thành công!";
+?>
 <!DOCTYPE html>
 <html lang="vi">
 
