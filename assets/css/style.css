@@ -273,3 +273,60 @@ body::after {
     position: relative;
     z-index: 9999;
 }
+
+/* ==================== CẤU HÌNH RESPONSIVE (MÀN HÌNH ĐIỆN THOẠI < 768px) ==================== */
+@media (max-width: 768px) {
+    
+    /* 1. Thanh Menu (Navbar): Chuyển từ hàng ngang thành hàng dọc để không bị tràn */
+    .navbar {
+        flex-direction: column; /* Xếp logo và menu thành hàng dọc */
+        gap: 15px;              /* Tạo khoảng cách giữa logo và các nút bấm */
+        padding: 15px;          /* Thu nhỏ khoảng cách trong */
+    }
+
+    .menu {
+        flex-direction: column; /* Xếp các mục menu (Trang chủ, Sự kiện...) thành một cột */
+        align-items: center;    /* Căn giữa chữ */
+        gap: 10px;              /* Thu hẹp khoảng cách giữa các mục */
+        width: 100%;            /* Phủ hết chiều rộng */
+    }
+
+    /* 2. Thanh tìm kiếm & Bộ lọc (Filter-box viên thuốc Glassmorphism) */
+    .filter-box {
+        flex-direction: column; /* Xếp ô tìm kiếm, dropdown, nút Reset thành hàng dọc */
+        width: 90%;             /* Cho khung thu hẹp lại vừa vặn màn hình điện thoại */
+        border-radius: 20px;    /* Bo tròn nhẹ lại thay vì hình viên thuốc dài */
+        padding: 15px;          /* Cân đối lại khoảng cách bên trong */
+    }
+
+    .filter-box input,
+    .filter-box select,
+    #resetBtn {
+        width: 100%;            /* Ép các ô nhập chữ và dropdown bè ra rộng 100% bằng nhau */
+    }
+
+    /* 3. Ảnh diễn giả phát sáng (.diengia img) */
+    .diengia img {
+        width: 100%;            /* Cho ảnh tự co giãn theo chiều rộng màn hình */
+        max-width: 300px;       /* Giới hạn ảnh trên điện thoại chỉ to tối đa 300px (thay vì 650px bị tràn) */
+        height: auto;           /* Tự động tính chiều cao theo tỉ lệ để ảnh không bị méo */
+    }
+
+    /* 4. Khung lưới danh sách sự kiện (#eventList) */
+    #eventList {
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); /* Ép các thẻ card sự kiện chiếm trọn 100% chiều ngang */
+        padding: 0 15px;        /* Tạo khoảng cách đệm 2 bên rìa màn hình điện thoại */
+    }
+
+    /* 5. Phần chân trang (Footer) */
+    .footer {
+        flex-direction: column; /* Xếp các cột thông tin liên hệ thành một hàng dọc */
+        align-items: flex-start;/* Căn lề trái cho chữ dễ đọc */
+        gap: 30px;              /* Tạo khoảng cách giữa các khối thông tin */
+        padding: 30px 20px;     /* Thu nhỏ padding cho vừa màn hình nhỏ */
+    }
+
+    .footer-box {
+        width: 100%;            /* Cho phép mỗi khối thông tin chiếm hết chiều rộng màn hình */
+    }
+}
