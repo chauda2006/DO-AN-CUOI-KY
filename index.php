@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
 
-```
-<!-- CSS chính -->
-<link rel="stylesheet" href="assets/css/style.css">
+
+<link rel="stylesheet" href="assets/css/style.css?v=<?php echo filemtime('assets/css/style.css'); ?>">
 
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,15 +29,15 @@
     <nav class="navbar navbar-expand-lg fixed-top cafe-navbar">
         <div class="container">
 
-```
         <!-- Logo -->
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-            <img src="assets/images/logo.png" alt="Logo" style="height:40px; margin-right:10px;">
-            <div>
-                <span class="brand-name">Maid Royal</span><br>
-                <small>Sweet Coffee & Dessert</small>
-            </div>
-        </a>
+       <a class="navbar-brand d-flex align-items-center" href="index.html">
+    <!-- Đã chuyển cấu hình kích thước và ép thêm hiệu ứng phát sáng trực tiếp vào style -->
+    <img src="assets/images/logo.png" alt="Logo" style="height:50px; margin-right:10px; transition: all 0.3s ease; animation: inlineGlow 2s infinite alternate ease-in-out;">
+    <div>
+        <span class="brand-name" style="transition: all 0.3s ease; animation: inlineTextGlow 2s infinite alternate ease-in-out;">Maid Royal</span><br>
+        <small class="brand-sub" style="color: #ffffff !important; opacity: 0.85; font-size: 11px;">Du lịch với chúng tôi</small>
+    </div>
+</a>
 
         <!-- Button mobile -->
         <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu">
@@ -62,7 +61,6 @@
 
     </div>
 </nav>
-```
 
 </header>
 
@@ -95,12 +93,9 @@
     </p>
 </section>
 
-<!-- FOOTER -->
-
 <footer class="footer bg-dark text-white p-4 mt-5">
     <div class="container d-flex flex-wrap justify-content-between">
 
-```
     <div>
         <h3>Thông tin liên hệ</h3>
         <p>🏫 Đại học Bình Dương</p>
@@ -117,11 +112,8 @@
     </div>
 
 </div>
-```
 
 </footer>
-
-<!-- JS -->
 
 <script src="assets/js/script.js"></script>
 

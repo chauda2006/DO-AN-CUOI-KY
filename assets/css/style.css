@@ -1,270 +1,275 @@
-body {
-  margin: 0;
-}
-
-/* {
+/* ========================================================
+   THIẾT LẬP CHUNG TOÀN TRANG & RESET MẶC ĐỊNH
+   ======================================================== */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}*/
+}
 
+html {
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
 
-.navbar {
-    position: fixed;
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* ========================================================
+   THANH MENU NAVBAR BOOTSTRAP (Cấu hình đè thư viện gốc)
+   ======================================================== */
+.navbar.cafe-navbar {
+    position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
-    background: #073c52ae;/* tô màu menu*/
-
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    z-index: 1000;
-
-    box-shadow: /* tăng độ sáng thanh menu*/
-        0 0 15px #00d4ff,
-        0 0 30px #00d4ff,
-        0 0 60px #00d4ff;
+    /* Sử dụng màu nền tối trong suốt để nổi bật chữ và đèn neon */
+    background: rgba(10, 25, 35, 0.82) !important; 
+    padding: 10px 0 !important;
+    z-index: 10000 !important;
+    /* Hiệu ứng hào quang xanh cyan chạy dưới chân thanh điều hướng */
+    border-bottom: 2px solid #00d4ff !important;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5) !important;
+    transition: background 0.3s ease;
 }
 
-
-
-
-/* phần logo===================================================== */
-.logo {
-    display: flex;
-    flex-direction: column; /* xếp dọc cho chữ " trang chủ" */
-    align-items: center;/* căn giữa xếp dọc cho chữ " trang chủ" */
-    text-decoration: none;/* xóa gạch chân thẻ liên kết <a> cho chữ " trang chủ" */
+/* Khối bao cụm logo */
+.navbar-brand {
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
-/* logo */
-.logo img {
-    width: 80px;/* lớn nhỏ của*/
-    height: auto;
-
-    filter: drop-shadow(0 0 10px #00d4ff);/* phát sáng logo*/
+/* ẢNH LOGO - ÉP CHẶT KÍCH THƯỚC CHUẨN CHỐNG LỖI TO KHỔNG LỒ */
+.navbar-brand img {
+    height: 48px !important;       /* Ép chiều cao cố định để navbar luôn gọn gàng */
+    width: auto !important;        /* Giữ nguyên tỷ lệ ảnh gốc, không móp ảnh */
+    max-width: 140px !important;   /* Khống chế chiều rộng tối đa ngăn lỗi tràn viền */
+    margin-right: 12px !important;
+    display: inline-block !important;
+    transition: filter 0.3s ease, transform 0.3s ease !important;
+    /* Gán hoạt họa nhấp nháy phát sáng tự động màu xanh ngọc biển */
+    animation: inlineGlow 2s infinite alternate ease-in-out !important;
 }
 
-/* chữ dưới */
-.logo-text {
-    color: #ffffff;/* màu chữ trang chủ dưới logo*/
-    font-size: 14px;/* cỡ chữ trang chủ logo*/
-    margin-top: 5px;/*độ thấp chữ sov logo*/
-
-    text-shadow: /* phát sáng chữ trang chủ*/
-        0 0 5px #00d4ff,
-        0 0 10px #00d4ff;
-}
-.logo{
-    position: fixed;/* ghim cố định vô màn hình ko cuốn theo khi kéo trang*/
-    top: 20px;
-    left: 20px;
-
-    z-index: 1000;/* nằm trên cùng*/
+/* CHỮ THƯƠNG HIỆU CHÍNH (Maid Royal) */
+.brand-name {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    color: #ff66cc !important;
+    line-height: 1.2 !important;
+    display: inline-block !important;
+    transition: color 0.3s ease, text-shadow 0.3s ease !important;
+    /* Gán hoạt họa nhấp nháy phát sáng tự động màu hồng neon */
+    animation: inlineTextGlow 2s infinite alternate ease-in-out !important;
 }
 
-
-/* menu ========================================================*/
-nav {
-    margin-left: auto; /* đẩy menu sang phải */
+/* CHỮ PHỤ DƯỚI LOGO (Du lịch với chúng tôi) */
+.brand-sub {
+    color: #ffffff !important;
+    font-size: 11px !important;
+    opacity: 0.85 !important;
 }
 
-.menu {
-    list-style: none;/* Xóa bỏ các dấu chấm tròn*/
-    display: flex !important; /* ép luôn cho chắc */
-    gap: 20px;/*Tạo khoảng cách đều nhau 20px giữa các mục để chúng không dính sát vào nhau*/
+/* ========================================================
+   BỘ HIỆU ỨNG TỰ ĐỘNG PHÁT SÁNG MẶC ĐỊNH (KEYFRAMES)
+   ======================================================== */
+@keyframes inlineGlow {
+    0% { 
+        filter: brightness(1) drop-shadow(0 0 2px rgba(48, 243, 67, 0.6)) !important; 
+    }
+    100% { 
+        filter: brightness(1.25) drop-shadow(0 0 12px #00ff88) drop-shadow(0 0 22px #0fe8e0) !important; 
+    }
 }
 
-.menu li a {
-    color: white;/* màu chue cho menu*/
-    text-decoration: none;/* xóa gạch chan*/
-    transition: 0.4s;/* nhanh chậm khi tiếp xúc v út kiểu đổi màu khi chạm vô*/
+@keyframes inlineTextGlow {
+    0% { 
+        text-shadow: 0 0 4px rgba(255, 102, 204, 0.5) !important; 
+    }
+    100% { 
+        text-shadow: 0 0 15px #ff66cc, 0 0 25px #ffb3ec !important; 
+    }
 }
 
-.menu li a:hover {/* màu khi chạm vô*/
-    color: #00d4ff;
+/* --- HIỆU ỨNG TƯƠNG TÁC KHI CHẠM CHUỘT VÀO LOGO (HOVER) --- */
+.navbar-brand:hover {
+    transform: scale(1.05) !important; /* Phóng nhẹ toàn bộ cụm logo */
+}
+
+/* Đưa chuột vào: Ảnh logo ngưng nháy cũ -> BỪNG SÁNG CỰC ĐẠI MÀU XANH NEON */
+.navbar-brand:hover img {
+    animation-play-state: paused !important; /* Đóng băng animation cũ tránh giật khung hình */
+    filter: brightness(1.4) drop-shadow(0 0 15px #00d4ff) drop-shadow(0 0 35px #00ffcc) !important;
+    transform: rotate(4px) !important; /* Nghiêng nhẹ ảnh hoạt họa vui mắt */
+}
+
+/* Đưa chuột vào: Chữ chuyển sang màu trắng rực rỡ và tỏa hào quang xanh nước biển */
+.navbar-brand:hover .brand-name {
+    animation-play-state: paused !important;
+    color: #ffffff !important;
     text-shadow: 
-        0 0 5px #00d4ff,
         0 0 10px #00d4ff,
-        0 0 20px #00d4ff;
+        0 0 25px #00d4ff,
+        0 0 45px #00bdde !important;
 }
 
-
-/* phần background của trang chủ===========================*/
-*{
-    margin:0;/* xóa kc ngoai*/
-    padding:0;/*x kc trong*/
-    box-sizing:border-box;/* cố định kích thước này kia của videp nền*/
+/* Phản hồi vật lý lún nhẹ xuống khi nhấn click chuột */
+.navbar-brand:active {
+    transform: scale(0.96) !important;
+    transition: transform 0.1s !important;
 }
 
-html{
-    scroll-behavior:smooth;/* tạo cuộn mượt hơn*/
+/* ========================================================
+   THẮP SÁNG HỆ THỐNG MENU CHỮ BOOTSTRAP (CHỐNG LỖI MỜ CHÌM)
+   ======================================================== */
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff !important;    /* Ép chữ menu thành màu trắng tinh khiết sáng rõ */
+    font-size: 16px !important;
+    font-weight: 600 !important;   /* Làm chữ dày nét, cứng cáp cực kỳ dễ đọc */
+    padding: 8px 18px !important;
+    /* Đổ lớp bóng đen dày phía sau chữ để tách biệt hoàn toàn khỏi video nền động */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0,0,0,0.6) !important;
+    transition: all 0.3s ease !important;
 }
 
-#bg-video{
-    position:fixed;/* ghim cố định */
-    top:0;
-    left:0;
-
-    width:100vw;/* ép kích thước chiều rộng 100*/
-    height:100vh;/* ép kích thước chiều caao*/
-
-    object-fit:cover;/* giữ nguyên tỷ lệ vidoe*/
-
-    z-index:-2;
+/* Hiệu ứng phát quang đổi sắc khi đưa chuột chạm vào chữ menu */
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link.active {
+    color: #00d4ff !important;    /* Chuyển xanh ngọc biển phát sáng */
+    text-shadow: 
+        0 0 8px #00d4ff,
+        0 0 20px #00d4ff !important;
+    transform: translateY(-2px) !important; /* Nhấc chữ nhẹ lên trên */
 }
 
-body::after{
-    content:"";/* Bắt buộc phải có để kích hoạt phần tử ảo này hoạt động (để trống nội dung bên trong*/
-    position:fixed;
-    inset:0;/*Ghim cố định và kéo dãn lớp màng này phủ*/
-
-    background:rgba(2, 2, 2, 0.618);
-
-    z-index:-1;
+/* NÚT ĐẶT BÀN BOOTSTRAP */
+.navbar-nav .btn-success {
+    border-radius: 20px !important; /* Bo tròn nút mềm mại */
+    padding: 8px 22px !important;
+    font-weight: 600 !important;
+    background-color: #28a745 !important;
+    border: none !important;
+    box-shadow: 0 0 12px rgba(40, 167, 69, 0.6) !important; /* Hào quang xanh bao quanh nút */
+    transition: all 0.3s ease !important;
+}
+.navbar-nav .btn-success:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 20px #28a745 !important; /* Bừng sáng mạnh hơn khi hover */
 }
 
-.stars{
-    position:fixed;/* Ghim cố định khung này trên màn hình khi cuộn trang */
-    inset:0; /* Kéo dãn khung phủ kín cả 4 cạnh màn hình */
-
-    width:100%;/* Chiều rộng bằng 100% màn hình */
-    height:200%;/* Chiều cao gấp đôi màn hình (để chuẩn bị làm hiệu ứng cuộn hoặc trượt nền) */
-
-    background:url("https://www.transparenttextures.com/patterns/dark-matter.png");/* Chèn ảnh các bong bóng lặp lại làm nền */
-
-    z-index:0;
+/* ========================================================
+   HỆ THỐNG VIDEO NỀN TOÀN MÀN HÌNH & HIỆU ỨNG SAO TRÔI
+   ======================================================== */
+#bg-video {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    object-fit: cover !important; /* Ép video phủ kín màn hình giữ nguyên tỷ lệ */
+    z-index: -2 !important;
 }
 
-.stars1{/* Lớp bb: Sáng nhất, chuyển động nhanh nhất (nằm gần mắt người xem nhất) */
-    animation:
-        moveStars 50s linear infinite,/* Chạy hiệu ứng trượt "moveStars" trong 50 giây, tốc độ đều, lặp vô hạn */
-        twinkle 2s infinite alternate;/* Chạy hiệu ứng nhấp nháy "twinkle" trong 2 giây, lặp vô hạn, đổi chiều liên tục */
+/* Lớp phủ màn đêm bảo vệ mắt, tăng tương phản cho khối văn bản nội dung */
+body::after {
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(3, 10, 18, 0.64) !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
 }
 
-.stars2{
-    opacity:.5;/* Giảm độ sáng của lớp bb thứ hai xuống còn 50% để tạo độ xa */
-
-    animation:
-        moveStars 100s linear infinite,/* Hiệu ứng trượt chậm hơn (100 giây), tốc độ đều, lặp vô hạn */
-        twinkle 3s infinite alternate;/* Hiệu ứng nhấp nháy chậm hơn (3 giây), lặp vô hạn, đổi chiều liên tục */
+/* Lớp đốm hạt trôi động */
+.stars {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 200% !important;
+    background: url("https://transparenttextures.com") !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
 }
 
-.stars3{
-    opacity:.3;/* Giảm độ sáng của lớp sao thứ ba xuống còn 30% để tạo cảm giác rất xa */
+.stars1 { animation: moveStars 60s linear infinite, twinkle 2s infinite alternate !important; }
+.stars2 { opacity: .5 !important; animation: moveStars 110s linear infinite, twinkle 3s infinite alternate !important; }
+.stars3 { opacity: .3 !important; animation: moveStars 160s linear infinite, twinkle 4s infinite alternate !important; }
 
-    animation:
-        moveStars 150s linear infinite,
-        twinkle 4s infinite alternate;
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-2000px); }
+}
+@keyframes twinkle {
+    from { opacity: .3; }
+    to { opacity: 1; }
 }
 
-@keyframes moveStars{
-    from{
-        transform:translateY(0);/* Trạng thái bắt đầu: Các bb ở vị trí mặc định */
-    }
-
-    to{
-        transform:translateY(-2000px);/* Trạng thái kết thúc: Đẩy toàn bộ lớp bb trượt thẳng lên trên 2000px */
-    }
+/* ========================================================
+   KHỐI NỘI DUNG CHÍNH & GIỚI THIỆU & FOOTER
+   ======================================================== */
+.content,
+.gioithieu {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 20px;
+    color: rgb(247, 243, 243);
+    position: relative;
+    z-index: 1;
 }
 
-@keyframes twinkle{
-    from{
-        opacity:.3;
-    }  /* Trạng thái bắt đầu: Các ngôi sao hơi mờ đi (độ sáng 30%) */
-
-    to{
-        opacity:1;
-    }
+/* Chữ tiêu đề lớn ở trang chủ */
+.content h1 {
+    color: #fdffff;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-shadow: 
+        0 0 15px #00d4ff,
+        0 0 30px #00d4ff !important;
 }
-.footer{
-    background: rgba(0,0,0,0.8);
-    color: rgb(224, 207, 207);
-    padding: 30px;
-    margin-top: 50px;
 
-    display: flex;/* Kích hoạt chế độ Flexbox để dàn trang các khối con */
-    justify-content: space-around;/* Căn đều các khối con, tạo khoảng trống xung quanh chúng */
-    flex-wrap: wrap;/*Tự động xuống dòng các khối con nếu màn hình bị thu nhỏ (responsive) */
+.content p {
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px #00d4ff !important;
+}
+
+/* Phần giới thiệu sự kiện */
+.gioithieu {
+    height: auto !important;
+    padding: 100px 20px !important;
+    background: rgba(5, 15, 25, 0.65);
+}
+
+.gioithieu h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px #00d4ff !important;
+}
+
+.gioithieu p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #e0e8f0;
+}
+
+/* Khối chân trang Footer */
+.footer {
+    width: 100%;
+    background: rgba(4, 12, 18, 0.95) !important;
+    padding: 60px 20px !important;
+    margin-top: 80px;
+    border-top: 3px solid rgb(10, 208, 239);
     position: relative;
     z-index: 9999;
-}
-.footer{
-    width: 100%;
-    background: rgba(0,0,0,0.75);
-
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-
-    padding: 50px 30px;/* kc trong*/
-    margin-top: 80px;/*kc ngoài*/
-
-    border-top: 3px solid rgb(10, 208, 239);/*Tạo một đường viền dày 3px màu xanh neon chổ phàn địa chri email */
-    
-}
-
-.footer-box{
-    width: 450px;/* dộ dài khung nè đen đen chổ phần địa chỉ*/
-    color: white;/* màu chữ bên trong của pphaanf địa chỉ này kia trường */
-}
-
-.footer-box h2{
-    color: rgb(255, 255, 255);
-    margin-bottom: 25px;
-    text-shadow: 0 0 10px rgb(0, 157, 255); /* Tạo hiệu ứng chữ phát sáng màu xanh neon rộng 10px */
-
-}
-
-.footer-box p{
-    margin: 18px 0;/* khoảng cách dòng của emial*/
-    font-size: 18px;
-}
-
-.footer-box a{
-    color: #00bdde;/* chữ bên phần liên kết */
-    text-decoration: none;
-    transition: .3s;
-}
-
-.footer-box a:hover{
-    color: white;/* màu khi nhấn vo*/
-    text-shadow: 0 0 10px cyan;
-    padding-left: 8px;
-}
-/* phần nọi dung trang chủ======================================*/
-.content,
-.section{
-    height:100vh;/* căn cho đẹp chữ*/
-
-    display:flex;
-    justify-content:center;
-    align-items:center;/* CĂN GIỮA*/
-    flex-direction:column;/* xếp doc*/
-
-    text-align:center;
-
-    color:rgb(247, 243, 243);/* là chữ công nghệ xanh đại d sạch*/
-    text-shadow: 
-        0 0 10px #00d4ff,
-        0 0 20px #00d4ff,
-        0 0 40px #00d4ff,
-        0 0 80px #00d4ff;
-    font-family:Arial,sans-serif;
-    position:relative;
-    z-index:1;
-}
-.content h1 {/* CHỮ TO CHỦ ĐỀ*/
-    color: #fdffff;
-
-    text-shadow: 
-        0 0 10px #00d4ff,
-        0 0 20px #00d4ff,
-        0 0 40px #00d4ff,
-        0 0 80px #00d4ff;
-    font-family:'Poppins', sans-serif;
-    font-size: 40px;
-    font-size: 3rem;
-    margin-bottom: 50px
 }
