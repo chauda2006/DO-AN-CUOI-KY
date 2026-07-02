@@ -30,15 +30,22 @@
     <nav class="navbar navbar-expand-lg fixed-top cafe-navbar">
         <div class="container">
 
-        <!-- Logo -->
-       <a class="navbar-brand d-flex align-items-center" href="index.html">
-    <!-- Đã chuyển cấu hình kích thước và ép thêm hiệu ứng phát sáng trực tiếp vào style -->
-    <img src="assets/images/logo.png" alt="Logo" style="height:50px; margin-right:10px; transition: all 0.3s ease; animation: inlineGlow 2s infinite alternate ease-in-out;">
-    <div>
-        <span class="brand-name" style="transition: all 0.3s ease; animation: inlineTextGlow 2s infinite alternate ease-in-out;">Royal Vietnam Guide</span><br>
-        <small class="brand-sub" style="color: #ffffff !important; opacity: 0.85; font-size: 11px;">Du lịch với chúng tôi</small>
-    </div>
-</a>
+        <!-- LOGO (click về trang chủ) -->
+        <a class="navbar-brand d-flex align-items-center" href="index.php">
+            <img src="assets/images/logo.png" alt="Logo"
+                 style="height:50px; margin-right:10px; transition:0.3s;">
+
+            <div>
+                <span style="font-weight:bold; color:#fff;">
+                    Royal Vietnam Guide
+                </span><br>
+
+                <small style="color:#fff; opacity:0.8; font-size:11px;">
+                    Du lịch với chúng tôi
+                </small>
+            </div>
+        </a>
+
 
         <!-- Button mobile -->
         <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu">

@@ -1,5 +1,4 @@
 <?php
-
 $keyword = $_GET['keyword'] ?? '';
 $region = $_GET['region'] ?? '';
 
@@ -45,7 +44,7 @@ $destinations = [
         'name' => 'Đà Nẵng',
         'location' => 'Đà Nẵng',
         'region' => 'mien-trung',
-        'image' => 'drf.jpg',
+        'image' => 'danang.jpg',
         'price' => 3200000,
         'description' => 'Đà Nẵng là thành phố biển hiện đại với cầu Rồng, Bà Nà Hills và bãi biển Mỹ Khê.'
     ]
@@ -68,176 +67,164 @@ $filteredDestinations = array_filter($destinations, function ($item) use ($keywo
     return $matchKeyword && $matchRegion;
 });
 ?>
+
 <!DOCTYPE html>
 <html lang="vi">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danh sách địa điểm du lịch</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách địa điểm du lịch</title>
-    
-    <!-- Bootstrap 5 -->
-    <link href="https://jsdelivr.net" rel="stylesheet">
-    
-    <!-- Bootstrap Icons -->
-    <link href="https://jsdelivr.net" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-   <link rel="stylesheet" href="assets/css/destinations.css?v=<?php echo filemtime('assets/css/destinations.css'); ?>">
-   <link rel="stylesheet" href="assets/css/destinations.css?v=1">
+<!-- ✅ Bootstrap chuẩn -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- ✅ Icon -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="assets/css/destinations.css">
+
+<style>
+body {
+    color: #fff;
+}
+#bg-video {
+    position: fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    z-index:-1;
+}
+.overlay {
+    position: fixed;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.5);
+    z-index:-1;
+}
+.card {
+    border-radius: 15px;
+}
+</style>
+
 </head>
 
-<body class="destination-page">
+<body>
 
+<div class="overlay"></div>
+
+<!-- VIDEO -->
+<video autoplay muted loop playsinline id="bg-video">
+    <source src="assets/videos/nen01.mp4" type="video/mp4">
+</video>
+
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="index.php">
-            <i class="bi bi-airplane-engines"></i> Travel Việt Nam
+        <!-- LOGO (click về trang chủ) -->
+        <a class="navbar-brand d-flex align-items-center" href="index.php">
+            <img src="assets/images/logo.png" alt="Logo"
+                 style="height:50px; margin-right:10px; transition:0.3s;">
+
+            <div>
+                <span style="font-weight:bold; color:#fff;">
+                    Royal Vietnam Guide
+                </span><br>
+
+                <small style="color:#fff; opacity:0.8; font-size:11px;">
+                    Du lịch với chúng tôi
+                </small>
+            </div>
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu">
+
+
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="mainMenu">
+        <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">Trang chủ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="destinations.php">Địa điểm</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="admin/login.php">Admin</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="index.php">Trang chủ</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#">Điểm đến</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Liên hệ</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<section class="destination-banner">
-    <div class="container text-center">
-        <h1>Khám phá địa điểm du lịch</h1>
-        <p>Tìm kiếm những điểm đến nổi bật cho chuyến đi của bạn</p>
-    </div>
-</section>
+<!-- TITLE -->
+<div class="container text-center" style="margin-top:120px;">
+    <h1>Khám phá địa điểm du lịch</h1>
+</div>
 
-<section class="container destination-section">
+<div class="container mt-5">
 
-    <form method="GET" class="destination-filter shadow">
-        <div class="row g-3 align-items-center">
-
-            <div class="col-lg-7 col-md-6">
-                <input
-                    type="text"
-                    name="keyword"
-                    class="form-control form-control-lg"
-                    placeholder="Nhập tên địa điểm, tỉnh thành hoặc mô tả..."
-                    value="<?= htmlspecialchars($keyword) ?>">
-            </div>
-
-            <div class="col-lg-3 col-md-4">
-                <select name="region" class="form-select form-select-lg">
-                    <option value="">Tất cả vùng miền</option>
-                    <option value="mien-bac" <?= $region == 'mien-bac' ? 'selected' : '' ?>>Miền Bắc</option>
-                    <option value="mien-trung" <?= $region == 'mien-trung' ? 'selected' : '' ?>>Miền Trung</option>
-                    <option value="mien-nam" <?= $region == 'mien-nam' ? 'selected' : '' ?>>Miền Nam</option>
-                </select>
-            </div>
-
-            <div class="col-lg-2 col-md-2">
-                <button class="btn btn-primary btn-lg w-100">
-                    <i class="bi bi-search"></i> Tìm
-                </button>
-            </div>
-
+<!-- FILTER -->
+<form method="GET" class="bg-dark p-4 rounded mb-4">
+    <div class="row g-3">
+        <div class="col-md-7">
+            <input type="text" name="keyword" class="form-control"
+                placeholder="Tìm kiếm..."
+                value="<?= htmlspecialchars($keyword) ?>">
         </div>
-    </form>
 
-    <div class="d-flex justify-content-between align-items-center mt-5 mb-4">
-        <h2 class="section-title">Danh sách địa điểm</h2>
-        <span class="badge bg-primary fs-6">
-            <?= count($filteredDestinations) ?> kết quả
-        </span>
+        <div class="col-md-3">
+            <select name="region" class="form-select">
+                <option value="">Tất cả</option>
+                <option value="mien-bac" <?= $region=='mien-bac'?'selected':'' ?>>Miền Bắc</option>
+                <option value="mien-trung" <?= $region=='mien-trung'?'selected':'' ?>>Miền Trung</option>
+                <option value="mien-nam" <?= $region=='mien-nam'?'selected':'' ?>>Miền Nam</option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn btn-primary w-100">
+                <i class="bi bi-search"></i> Tìm
+            </button>
+        </div>
     </div>
+</form>
 
-    <div class="row">
+<!-- RESULT -->
+<h4><?= count($filteredDestinations) ?> kết quả</h4>
 
-        <?php if (count($filteredDestinations) > 0): ?>
+<div class="row mt-3">
+<?php if(count($filteredDestinations)>0): ?>
+    <?php foreach($filteredDestinations as $item): ?>
+        <div class="col-md-4 mb-4">
+            <div class="card text-dark h-100 shadow">
 
-            <?php foreach ($filteredDestinations as $item): ?>
+                <img src="assets/images/<?= $item['image'] ?>"
+                     style="height:200px; object-fit:cover;">
 
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card destination-card h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5><?= $item['name'] ?></h5>
+                    <small class="text-muted"><?= $item['location'] ?></small>
 
-                        <div class="destination-img-box">
-                            <img
-                                src="assets/images/<?= htmlspecialchars($item['image']) ?>"
-                                class="card-img-top"
-                                alt="<?= htmlspecialchars($item['name']) ?>">
+                    <p class="mt-2"><?= $item['description'] ?></p>
 
-                            <span class="destination-category">
-                                <?= htmlspecialchars($item['location']) ?>
-                            </span>
-                        </div>
+                    <b class="text-danger mt-auto">
+                        <?= number_format($item['price']) ?> đ
+                    </b>
 
-                        <div class="card-body d-flex flex-column">
-
-                            <h4 class="card-title">
-                                <?= htmlspecialchars($item['name']) ?>
-                            </h4>
-
-                            <p class="destination-location">
-                                <i class="bi bi-geo-alt-fill"></i>
-                                <?= htmlspecialchars($item['location']) ?>
-                            </p>
-
-                            <p class="card-text">
-                                <?= htmlspecialchars($item['description']) ?>
-                            </p>
-
-                            <div class="destination-price mt-auto">
-                                <?= number_format($item['price'], 0, ',', '.') ?> VNĐ
-                            </div>
-
-                            <a
-                                href="detail.php?id=<?= $item['id'] ?>"
-                                class="btn btn-outline-primary w-100 mt-3">
-                                Xem chi tiết
-                            </a>
-
-                        </div>
-
-                    </div>
+                    <a href="detail.php?id=<?= $item['id'] ?>"
+                       class="btn btn-outline-primary mt-3">
+                        Xem chi tiết
+                    </a>
                 </div>
 
-            <?php endforeach; ?>
-
-        <?php else: ?>
-
-            <div class="col-12">
-                <div class="alert alert-warning text-center">
-                    Không tìm thấy địa điểm phù hợp.
-                </div>
             </div>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>Không tìm thấy kết quả</p>
+<?php endif; ?>
+</div>
 
-        <?php endif; ?>
+</div>
 
-    </div>
-
-</section>
-
-<footer class="footer text-center">
-    <div class="container">
-        <p>© 2026 Travel Việt Nam - Website du lịch</p>
-    </div>
-</footer>
-
-<button id="backToTop" class="back-to-top">
-    <i class="bi bi-arrow-up"></i>
-</button>
-
-<script src="assets/js/script.js"></script>
+<!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
