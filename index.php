@@ -54,9 +54,9 @@
                 <li class="nav-item"><a class="nav-link" href="gioithieu.html">Giới thiệu</a></li>
                 <li class="nav-item"><a class="nav-link" href="lienhe.html">Liên hệ</a></li>
                 <li class="nav-item ms-lg-3">
-                    <a class="btn btn-success" href="#">
-                        <i class="bi bi-calendar-check"></i> Đặt bàn
-                    </a>
+                    
+                <a class="btn btn-success" href="admin/login.php">
+                    <i class="bi bi-calendar-check"></i> Đăng nhập</a>
                 <!-- Đặt nút này ở nơi bạn muốn hiển thị trên thanh menu -->
                  <button id="themeToggle" class="theme-btn">🌙 Chế độ tối</button>
 
@@ -79,6 +79,7 @@
 <!-- HIỆU ỨNG -->
 
 <div class="stars stars1"></div>
+
 <div class="stars stars3"></div>
 
 <!-- NỘI DUNG -->
