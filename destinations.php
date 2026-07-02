@@ -57,8 +57,8 @@ $filteredDestinations = array_filter($destinations, function ($item) use ($keywo
 
     if ($keyword !== '') {
         $text = mb_strtolower($item['name'] . ' ' . $item['location'] . ' ' . $item['description'], 'UTF-8');
-$searchText = mb_strtolower($keyword, 'UTF-8');
-$matchKeyword = mb_strpos($text, $searchText) !== false;
+        $searchText = mb_strtolower($keyword, 'UTF-8');
+        $matchKeyword = mb_strpos($text, $searchText) !== false;
     }
 
     if ($region !== '') {
@@ -76,10 +76,16 @@ $matchKeyword = mb_strpos($text, $searchText) !== false;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh sách địa điểm du lịch</title>
+    
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-   <link rel="stylesheet" href="assets/css/destinations.css?v=1">
+    <link rel="stylesheet" href="assets/css/destinations.css?v=1">
 </head>
 
 <body class="destination-page">
@@ -227,9 +233,11 @@ $matchKeyword = mb_strpos($text, $searchText) !== false;
         <p>© 2026 Travel Việt Nam - Website du lịch</p>
     </div>
 </footer>
+
 <button id="backToTop" class="back-to-top">
     <i class="bi bi-arrow-up"></i>
 </button>
+
 <script src="assets/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
