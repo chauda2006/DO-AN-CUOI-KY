@@ -6,7 +6,7 @@ $destinations = [
         'id' => 1,
         'name' => 'Đà Lạt',
         'location' => 'Lâm Đồng',
-        'region' => 'Miền Nam',
+        'region' => 'Miền Trung',
         'image' => 'dalat.jpg',
         'price' => 2500000,
         'time' => '3 ngày 2 đêm',
@@ -40,7 +40,7 @@ $destinations = [
         'name' => 'Tràng An',
         'location' => 'Ninh Bình',
         'region' => 'Miền Bắc',
-        'image' => 'trangan.jpg',
+        'image' => 'tranan2.jpg',
         'price' => 1800000,
         'time' => '1 ngày',
         'description' => 'Tràng An nổi bật với cảnh quan núi đá vôi, sông nước và các hang động tự nhiên. Đây là khu du lịch sinh thái nổi tiếng, được nhiều du khách trong và ngoài nước yêu thích.',
@@ -51,12 +51,60 @@ $destinations = [
         'name' => 'Đà Nẵng',
         'location' => 'Đà Nẵng',
         'region' => 'Miền Trung',
-        'image' => 'drf.jpg',
+        'image' => 'danang2.jpg',
         'price' => 3200000,
         'time' => '3 ngày 2 đêm',
         'description' => 'Đà Nẵng là thành phố biển hiện đại, năng động với nhiều địa điểm nổi tiếng như cầu Rồng, Bà Nà Hills và bãi biển Mỹ Khê. Đây là điểm đến phù hợp cho cả gia đình và nhóm bạn.',
         'highlights' => ['Cầu Rồng', 'Bà Nà Hills', 'Biển Mỹ Khê', 'Ngũ Hành Sơn']
-    ]
+    ],
+        // ... id 5 (Đà Nẵng) ...
+    [
+        'id' => 6,
+        'name' => 'Cà Mau',
+        'location' => 'Cà Mau',
+        'region' => 'Miền Nam',
+        'image' => 'camau2.jpg',
+        'price' => 2900000,
+        'time' => '3 ngày 2 đêm',
+        'description' => 'Cà Mau là vùng đất mũi cực Nam...',
+        'highlights' => ['Mũi Cà Mau', 'Rừng U Minh Hạ', 'Hòn Đá Bạc', 'Chợ nổi Cà Mau']
+    ], 
+    [
+        'id' => 7,
+        'name' => 'Sa Pa',
+        'location' => 'Lào Cai',
+        'region' => 'Miền Bắc',
+        'image' => 'sapa2.jpg',
+        'price' => 3500000,
+        'time' => '3 ngày 2 đêm',
+        'description' => 'Sa Pa là thị trấn mờ sương...',
+        'highlights' => ['Đỉnh Fansipan', 'Bản Cát Cát', 'Thung lũng Mường Hoa', 'Núi Hàm Rồng']
+    ],
+        [
+        'id' => 8,
+        'name' => 'Vịnh Hạ Long',
+        'location' => 'Quảng Ninh',
+        'region' => 'Miền Bắc', // Sử dụng chữ viết hoa có dấu đồng bộ với Sa Pa của bạn
+        'image' => 'halong2.jpg',
+        'price' => 3800000,
+        'time' => '3 ngày 2 đêm',
+        'description' => 'Vịnh Hạ Long là di sản thiên nhiên thế giới được UNESCO công nhận, nổi tiếng với hàng ngàn hòn đảo đá vôi kỳ vĩ mọc lên từ làn nước biển xanh ngọc bích, tạo nên một bức tranh thủy mặc khổng lồ tuyệt đẹp.',
+        'highlights' => ['Đảo Ti Tốp', 'Hang Sửng Sốt', 'Đảo Tuần Châu', 'Vịnh Lan Hạ']
+    ],
+    [
+        'id' => 9,
+        'name' => 'Cần Thơ',
+        'location' => 'Cần Thơ',
+        'region' => 'Miền Nam',
+        'image' => 'cantho2.jpg',
+        'price' => 1900000,
+        'time' => '2 ngày 1 đêm',
+        'description' => 'Cần Thơ gạo trắng nước trong, xứ sở Tây Đô hiền hòa nổi tiếng với văn hóa sông nước đặc sắc, những vườn cây ăn trái quanh năm trĩu quả và lòng hiếu khách của người dân Nam Bộ.',
+        'highlights' => ['Chợ nổi Cái Răng', 'Bến Ninh Kiều', 'Nhà cổ Bình Thủy', 'Thiền viện Trúc Lâm']
+    ],
+
+
+
 ];
 
 $currentDestination = null;

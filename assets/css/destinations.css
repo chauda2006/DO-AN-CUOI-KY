@@ -210,7 +210,7 @@ form.bg-dark {
 }
 
 form .form-control, form .form-select {
-    background: rgba(255, 255, 255, 0.1) !important;
+    background: rgb(255, 255, 255) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     color: #fff !important;
 }
@@ -300,19 +300,19 @@ form .btn-primary:hover {
 
 /* 🌙 Kích hoạt: Chế độ tối (Dark Mode) */
 [data-theme="dark"] {
-    --bg-color: #0b0d17;          /* Nền tối sâu (Deep Dark Blue/Black) */
+    --bg-color: #0b0d17b9;          /* Nền tối sâu (Deep Dark Blue/Black) */
     --text-color: #f0f2f5;        /* Chữ chính (Trắng sáng dịu mắt) */
-    --text-muted: #a0aec0;        /* Chữ phụ (Xám xanh không bị lóa) */
+    --text-muted: #fbfcfe;        /* Chữ phụ (Xám xanh không bị lóa) */
     
-    --navbar-bg: rgba(15, 17, 26, 0.85); /* Nền menu tối trong suốt */
-    --footer-bg: #090b11;         /* Nền chân trang tối hơn nền chính */
-    --card-bg: #161925;           /* Nền thẻ sự kiện/địa điểm (Nổi bật trên nền tối) */
-    --border-color: #2d3142;      /* Đường viền tối mờ */
+    --navbar-bg: rgba(15, 17, 26, 0.627); /* Nền menu tối trong suốt */
+    --footer-bg: #000000be;         /* Nền chân trang tối hơn nền chính */
+    --card-bg: #0000008a;           /* Nền thẻ sự kiện/địa điểm (Nổi bật trên nền tối) */
+    --border-color: #69b1b6;      /* Đường viền tối mờ */
     
     /* Màu sắc bổ trợ cho nút bấm phát sáng chuyển sang hiệu ứng Neon */
     --glow-color: rgba(0, 212, 255, 0.6); 
     --btn-hover-bg: #ffffff;
-    --btn-hover-text: #43454e;
+    --btn-hover-text: #fdfdff;
     
     --form-bg: rgba(20, 24, 33, 0.85);
     --form-text: #ffffff;

@@ -7,7 +7,7 @@ $destinations = [
         'id' => 1,
         'name' => 'Đà Lạt',
         'location' => 'Lâm Đồng',
-        'region' => 'mien-nam',
+        'region' => 'mien-trung',
         'image' => 'dalat.jpg',
         'price' => 2500000,
         'description' => 'Đà Lạt nổi tiếng với khí hậu mát mẻ, rừng thông, hồ nước và các địa điểm check-in tuyệt đẹp.'
@@ -35,7 +35,7 @@ $destinations = [
         'name' => 'Tràng An',
         'location' => 'Ninh Bình',
         'region' => 'mien-bac',
-        'image' => 'trangan.jpg',
+        'image' => 'tranan1.jpg',
         'price' => 1800000,
         'description' => 'Tràng An nổi bật với cảnh quan núi đá vôi, sông nước và các hang động tự nhiên.'
     ],
@@ -44,10 +44,50 @@ $destinations = [
         'name' => 'Đà Nẵng',
         'location' => 'Đà Nẵng',
         'region' => 'mien-trung',
-        'image' => 'danang.jpg',
+        'image' => 'danang1.jpg',
         'price' => 3200000,
         'description' => 'Đà Nẵng là thành phố biển hiện đại với cầu Rồng, Bà Nà Hills và bãi biển Mỹ Khê.'
+
+    ],
+    [
+        'id' => 6,
+        'name' => 'Cà Mau',
+        'location' => 'Cà Mau',
+        'region' => 'mien-nam',
+        'image' => 'camau1.jpg',
+        'price' => 2900000,
+        'description' => 'Cà Mau là vùng đất mũi cực Nam Tổ quốc, nổi tiếng với rừng ngập mặn hoang sơ, chợ nổi và cua Cà Mau siêu ngon.'
+    ],
+    [
+        'id' => 7,
+        'name' => 'Sa Pa',
+        'location' => 'Lào Cai',
+        'region' => 'mien-bac',
+        'image' => 'sapa1.jpg',
+        'price' => 3500000,
+        'description' => 'Sa Pa là thị trấn mờ sương, nổi tiếng với đỉnh Fansipan hùng vĩ, ruộng bậc thang kỳ vĩ và bản sắc văn hóa độc đáo.'
+    ],
+    [
+        'id' => 8,
+        'name' => 'Vịnh Hạ Long',
+        'location' => 'Quảng Ninh',
+        'region' => 'mien-bac',
+        'image' => 'halong1.jpg',
+        'price' => 3800000,
+        'description' => 'Vịnh Hạ Long là di sản thiên nhiên thế giới với hàng ngàn hòn đảo đá vôi kỳ vĩ mọc lên từ làn nước biển xanh ngọc bích.'
+    ],
+    [
+        'id' => 9,
+        'name' => 'Cần Thơ',
+        'location' => 'Cần Thơ',
+        'region' => 'mien-nam',
+        'image' => 'cantho1.webp',
+        'price' => 1900000,
+        'description' => 'Cần Thơ gạo trắng nước trong, nổi tiếng với nét đẹp văn hóa chợ nổi sông nước, các miệt vườn trĩu quả và bến Ninh Kiều thơ mộng.'
     ]
+
+
+
 ];
 
 $filteredDestinations = array_filter($destinations, function ($item) use ($keyword, $region) {
