@@ -59,14 +59,12 @@
                 <li class="nav-item"><a class="nav-link active" href="#">Trang chủ</a></li>
                 <li class="nav-item"><a class="nav-link" href="destinations.php">Điểm đến</a></li>
                 <li class="nav-item"><a class="nav-link" href="lienhe.html">Liên hệ</a></li>
-                <li class="nav-item ms-lg-3">
                     
                 <a class="btn btn-success" href="detail.php">
                     <i class="bi bi-calendar-check"></i> chi tiết</a>
                 <!-- Đặt nút này ở nơi bạn muốn hiển thị trên thanh menu -->
                  <button id="themeToggle" class="theme-btn">🌙 Chế độ tối</button>
 
-                </li>
             </ul>
         </div>
 

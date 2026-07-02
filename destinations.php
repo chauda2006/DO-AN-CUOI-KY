@@ -79,10 +79,7 @@ $filteredDestinations = array_filter($destinations, function ($item) use ($keywo
 
 <!-- ✅ Icon -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
-<!-- CSS -->
-<link rel="stylesheet" href="assets/css/destinations.css">
-
+<link rel="stylesheet" href="assets/css/destinations.css?v=<?php echo filemtime('assets/css/destinations.css'); ?>">
 <style>
 body {
     color: #fff;
@@ -99,7 +96,7 @@ body {
     position: fixed;
     width:100%;
     height:100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(4, 237, 234, 0.59);
     z-index:-1;
 }
 .card {
@@ -148,6 +145,10 @@ body {
                 <li class="nav-item"><a class="nav-link" href="index.php">Trang chủ</a></li>
                 <li class="nav-item"><a class="nav-link active" href="#">Điểm đến</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Liên hệ</a></li>
+                <a class="btn btn-success" href="detail.php">
+                    <i class="bi bi-calendar-check"></i> chi tiết</a>
+                <!-- Đặt nút này ở nơi bạn muốn hiển thị trên thanh menu -->
+                 <button id="themeToggle" class="theme-btn">🌙 Chế độ tối</button>
             </ul>
         </div>
     </div>
@@ -226,6 +227,9 @@ body {
 
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Liên kết JavaScript tự động xóa bộ nhớ đệm khi có thay đổi code -->
+<script src="assets/js/script.js?v=<?php echo filemtime('assets/js/script.js'); ?>"></script>
+
 
 </body>
 </html>

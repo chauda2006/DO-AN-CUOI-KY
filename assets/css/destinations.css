@@ -1,134 +1,683 @@
+/* ========================================================
+   THIẾT LẬP CHUNG TOÀN TRANG & RESET MẶC ĐỊNH
+   ======================================================== */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-body.destination-page {
+html {
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
     margin: 0;
-    background: #f5f9ff;
-    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    color: #ffffff83; /* Ép chữ toàn trang màu trắng */
 }
 
-body.destination-page::after {
-    display: none;
-}
-
-.destination-page .navbar {
-    position: fixed;
+/* ========================================================
+   THANH MENU NAVBAR BOOTSTRAP (Cấu hình đè thư viện gốc)
+   ======================================================== */
+.navbar {
+    position: fixed !important;
     top: 0;
+    left: 0;
     width: 100%;
-    z-index: 999;
-    background: #212529;
-    padding: 16px 0;
+    background: rgba(17, 184, 184, 0.632) !important; 
+    padding: 10px 0 !important;
+    z-index: 10000 !important;
+    border-bottom: 2px solid #00d4ff !important;
+    box-shadow: 0 0 20px rgba(106, 230, 158, 0.5) !important;
+    transition: background 0.3s ease;
 }
 
-.destination-banner {
-    margin-top: 70px;
-    padding: 90px 0;
-    background:
-        linear-gradient(rgba(0, 64, 128, 0.65), rgba(0, 119, 182, 0.75)),
-        url("../images/trangan.jpg") center/cover no-repeat;
-    color: white;
-    text-align: center;
+/* Khối bao cụm logo */
+.navbar-brand {
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
-.destination-banner h1 {
-    font-size: 46px;
-    font-weight: 800;
+/* ẢNH LOGO */
+.navbar-brand img {
+    height: 70px !important;       /* Khớp với inline style cũ của bạn */
+    width: auto !important;        
+    max-width: 140px !important;   
+    margin-right: 12px !important;
+    display: inline-block !important;
+    transition: filter 0.3s ease, transform 0.3s ease !important;
+    animation: inlineGlow 2s infinite alternate ease-in-out !important;
 }
 
-.destination-banner p {
-    font-size: 18px;
+/* ========================================================
+   BỘ HIỆU ỨNG TỰ ĐỘNG PHÁT SÁNG MẶC ĐỊNH (KEYFRAMES)
+   ======================================================== */
+@keyframes inlineGlow {
+    0% { 
+        filter: brightness(1) drop-shadow(0 0 2px rgba(48, 243, 67, 0.6)) !important; 
+    }
+    100% { 
+        filter: brightness(1.25) drop-shadow(0 0 12px #00ff88) drop-shadow(0 0 22px #0fe8e0) !important; 
+    }
 }
 
-.destination-section {
-    padding: 60px 0;
+@keyframes inlineTextGlow {
+    0% { 
+        text-shadow: 0 0 4px rgba(42, 122, 70, 0.5) !important; 
+    }
+    100% { 
+        text-shadow: 0 0 15px #2adb39, 0 0 25px #138352 !important; 
+    }
 }
 
-.destination-filter {
-    background: white;
-    padding: 25px;
-    border-radius: 18px;
-    margin-top: -40px;
-    box-shadow: 0 10px 28px rgba(0,0,0,.12);
+/* --- HIỆU ỨNG TƯƠNG TÁC KHI CHẠM CHUỘT VÀO LOGO (HOVER) --- */
+.navbar-brand:hover {
+    transform: scale(1.05) !important;
 }
 
-.section-title {
-    color: #12355b;
-    font-weight: 800;
+.navbar-brand:hover img {
+    animation-play-state: paused !important; 
+    filter: brightness(1.4) drop-shadow(0 0 15px #00d4ff) drop-shadow(0 0 35px #00ffcc) !important;
+    transform: rotate(4px) !important; 
 }
 
-.destination-card {
-    border: none;
-    border-radius: 22px;
+/* Ép hiệu ứng sáng chữ cho tên thương hiệu trong cấu trúc PHP mới */
+.navbar-brand span {
+    animation: inlineTextGlow 2s infinite alternate ease-in-out !important;
+    transition: color 0.3s ease, text-shadow 0.3s ease !important;
+}
+
+.navbar-brand:hover span {
+    animation-play-state: paused !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 10px #00d4ff, 0 0 25px #00d4ff, 0 0 45px #00bdde !important;
+}
+
+.navbar-brand:active {
+    transform: scale(0.96) !important;
+    transition: transform 0.1s !important;
+}
+
+/* ========================================================
+   THẮP SÁNG HỆ THỐNG MENU CHỮ BOOTSTRAP
+   ======================================================== */
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff !important;    
+    font-size: 16px !important;
+    font-weight: 600 !important;   
+    padding: 8px 18px !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0,0,0,0.6) !important;
+    transition: all 0.3s ease !important;
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link.active {
+    color: #0ae44b !important;    
+    text-shadow: 0 0 8px #00ff40, 0 0 20px hsl(171, 78%, 42%) !important;
+    transform: translateY(-2px) !important; 
+}
+
+/* NÚT CHI TIẾT (Được đổi từ nút đặt bàn cũ để khớp code PHP) */
+.navbar-nav .btn-success {
+    border-radius: 20px !important; 
+    padding: 6px 20px !important;
+    font-weight: 600 !important;
+    background-color: #28a745 !important;
+    border: none !important;
+    box-shadow: 0 0 12px rgba(40, 167, 69, 0.6) !important; 
+    transition: all 0.3s ease !important;
+}
+.navbar-nav .btn-success:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 20px #28a745 !important; 
+}
+
+/* NÚT CHẾ ĐỘ TỐI NEON */
+.theme-btn {
+    background: transparent !important;
+    border: 2px solid #00d4ff !important;
+    color: #00d4ff !important;
+    padding: 6px 16px !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3) !important;
+    transition: all 0.3s ease !important;
+}
+.theme-btn:hover {
+    background: #00d4ff !important;
+    color: #000 !important;
+    box-shadow: 0 0 20px #00d4ff !important;
+    transform: scale(1.05);
+}
+
+/* ========================================================
+   HỆ THỐNG VIDEO NỀN TOÀN MÀN HÌNH & HIỆU ỨNG SAO TRÔI
+   ======================================================== */
+#bg-video {
+    position: fixed !important;
+    top: 0; left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    object-fit: cover !important; 
+    z-index: -2 !important;
+}
+
+/* Lớp phủ màn màu sắc cyan kết hợp làm mờ bóng đêm */
+.overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    background: linear-gradient(135deg, rgba(216, 250, 249, 0.07) 0%, rgba(12, 108, 218, 0.6) 100%) !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+}
+
+/* Tích hợp ảnh lớp hạt bụi mịn từ hình ảnh bạn gửi */
+body::after {
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" width="100" height="100"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.15)"/><circle cx="50" cy="40" r="1.5" fill="rgba(255,255,255,0.2)"/><circle cx="80" cy="70" r="0.8" fill="rgba(255,255,255,0.1)"/></svg>');
+    opacity: 0.6;
+    z-index: -1 !important;
+    pointer-events: none !important;
+    animation: moveStars 40s linear infinite !important;
+}
+
+@keyframes moveStars {
+    from { background-position: 0 0; }
+    to { background-position: 0 -1000px; }
+}
+
+/* ========================================================
+   CẤU HÌNH TIÊU ĐỀ & KHỐI TÌM KIẾM (FILTER)
+   ======================================================== */
+h1 {
+    color: #fdffff !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 15px rgba(0, 255, 89, 0.7), 0 0 30px rgba(0, 213, 255, 0.7) !important;
+}
+
+form.bg-dark {
+    background: rgba(20, 24, 33, 0.85) !important; /* Đổ bóng đen trong suốt cho form */
+    border: 1px solid rgba(0, 212, 255, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(10px);
+}
+
+form .form-control, form .form-select {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+}
+
+form .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+form .form-control:focus, form .form-select:focus {
+    border-color: #00d4ff !important;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5) !important;
+}
+
+/* NÚT TÌM KIẾM */
+form .btn-primary {
+    background: linear-gradient(45deg, #00d4ff, #00ff88) !important;
+    border: none !important;
+    color: #000 !important;
+    font-weight: bold !important;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4) !important;
+    transition: all 0.3s ease !important;
+}
+form .btn-primary:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.8) !important;
+}
+
+/* ========================================================
+   THIẾT KẾ ĐÈ CARD HIỂN THỊ ĐỊA ĐIỂM (DANH SÁCH)
+   ======================================================== */
+.card {
+    background: rgba(255, 255, 255, 0.95) !important; /* Giữ nền sáng nhẹ để nổi text đen bên trong */
+    border-radius: 15px !important;
     overflow: hidden;
-    box-shadow: 0 12px 35px rgba(0,0,0,.16);
-    transition: .35s;
-    background: white;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease !important;
 }
 
-.destination-card:hover {
-    transform: translateY(-10px);
+.card:hover {
+    transform: translateY(-10px) scale(1.02) !important;
+    box-shadow: 0 15px 30px rgba(0, 212, 255, 0.5) !important; /* Hào quang xanh bao quanh Card khi hover */
 }
 
-.destination-img-box {
-    position: relative;
-    height: 250px;
-    overflow: hidden;
+.card img {
+    transition: transform 0.5s ease;
 }
 
-.destination-img-box img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    transition: .5s;
+.card:hover img {
+    transform: scale(1.08); /* Phóng to ảnh nhẹ khi rê chuột vào */
 }
 
-.destination-card:hover img {
-    transform: scale(1.08);
-}
-
-.destination-category {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #0d6efd;
-    color: white;
-    padding: 7px 15px;
-    border-radius: 30px;
-    font-weight: bold;
-}
-
-.destination-card .card-body {
-    padding: 26px;
-}
-
-.destination-card .card-title {
-    font-size: 28px;
-    color: #12355b;
-    font-weight: 800;
-}
-
-.destination-location {
-    color: #0d6efd;
+/* NÚT XEM CHI TIẾT TRONG CARD */
+.card .btn-outline-primary {
+    border: 2px solid #00d4ff !important;
+    color: #00d4ff !important;
     font-weight: 600;
+    transition: all 0.3s ease !important;
+}
+.card .btn-outline-primary:hover {
+    background: #00d4ff !important;
+    color: #fff !important;
+    box-shadow: 0 0 15px #00d4ff !important;
+}
+/* ==========================================================================
+   1. ĐỊNH NGHĨA BIẾN MÀU SẮC (BẮT BUỘC ĐẶT Ở ĐẦU FILE)
+   ========================================================================== */
+
+/* ☀️ Mặc định: Chế độ sáng (Light Mode) */
+:root {
+    --bg-color: #e9e5e5;          /* Nền chính của toàn trang */
+    --text-color: #222222;        /* Chữ chính (Sửa lại thành màu tối để đọc được trên nền sáng) */
+    --text-muted: #666666;        /* Chữ phụ (Xám nhạt cho ngày tháng, mô tả) */
+    
+    --navbar-bg: rgba(0, 255, 221, 0.621); /* Nền menu trong suốt nhẹ */
+    --footer-bg: #19bae24e;         /* Nền chân trang (Xám rất nhẹ) */
+    --card-bg: #ffffff;           /* Nền các thẻ địa điểm */
+    --border-color: #e0e0e0;      /* Màu đường viền, nét kẻ */
+    
+    /* Màu sắc bổ trợ cho nút bấm phát sáng */
+    --glow-color: rgba(0, 0, 0, 0.1); 
+    --btn-hover-bg: #222222;
+    --btn-hover-text: #ffffff;
+    
+    --form-bg: rgba(255, 255, 255, 0.9);
+    --form-text: #333333;
+    --neon-glow: 0 0 15px rgb(250, 254, 255);
 }
 
-.destination-price {
-    color: #e63946;
-    font-size: 22px;
-    font-weight: 800;
+/* 🌙 Kích hoạt: Chế độ tối (Dark Mode) */
+[data-theme="dark"] {
+    --bg-color: #0b0d17;          /* Nền tối sâu (Deep Dark Blue/Black) */
+    --text-color: #f0f2f5;        /* Chữ chính (Trắng sáng dịu mắt) */
+    --text-muted: #a0aec0;        /* Chữ phụ (Xám xanh không bị lóa) */
+    
+    --navbar-bg: rgba(15, 17, 26, 0.85); /* Nền menu tối trong suốt */
+    --footer-bg: #090b11;         /* Nền chân trang tối hơn nền chính */
+    --card-bg: #161925;           /* Nền thẻ sự kiện/địa điểm (Nổi bật trên nền tối) */
+    --border-color: #2d3142;      /* Đường viền tối mờ */
+    
+    /* Màu sắc bổ trợ cho nút bấm phát sáng chuyển sang hiệu ứng Neon */
+    --glow-color: rgba(0, 212, 255, 0.6); 
+    --btn-hover-bg: #ffffff;
+    --btn-hover-text: #43454e;
+    
+    --form-bg: rgba(20, 24, 33, 0.85);
+    --form-text: #ffffff;
+    --neon-glow: 0 0 20px rgb(246, 253, 255), 0 0 30px rgba(0, 255, 136, 0.4);
 }
 
-.destination-card .btn {
-    border-radius: 30px;
-    padding: 11px;
-    font-weight: 700;
+/* ==========================================================================
+   2. THIẾT LẬP CHUNG TOÀN TRANG & RESET MẶC ĐỊNH
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.destination-page .footer {
-    background: #0b1f33;
-    color: white;
-    text-align: center;
-    padding: 25px 0;
-    margin-top: 50px;
+html {
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Đổi màu mượt mà */
+}
+
+/* ==========================================================================
+   3. THANH MENU NAVBAR BOOTSTRAP (Tự động thích nghi)
+   ========================================================================== */
+.navbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--navbar-bg) !important; 
+    border-bottom: 2px solid var(--border-color) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+    backdrop-filter: blur(10px); 
+    padding: 10px 0 !important;
+    z-index: 10000 !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+/* Khi ở chế độ tối, đẩy mạnh hào quang Neon cho thanh Navbar */
+[data-theme="dark"] .navbar {
+    border-bottom: 2px solid #00d4ff !important;
+    box-shadow: 0 0 20px rgba(106, 230, 158, 0.4) !important;
+}
+
+/* Khối bao cụm logo */
+.navbar-brand {
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* ẢNH LOGO */
+.navbar-brand img {
+    height: 70px !important;       
+    width: auto !important;        
+    max-width: 140px !important;   
+    margin-right: 12px !important;
+    display: inline-block !important;
+    transition: filter 0.3s ease, transform 0.3s ease !important;
+    animation: inlineGlow 2s infinite alternate ease-in-out !important;
+}
+
+/* CHỮ LOGO CHÍNH */
+.navbar-brand span {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    color: #fefefe !important;
+    line-height: 1.2 !important;
+    display: inline-block !important;
+    transition: color 0.3s ease, text-shadow 0.3s ease !important;
+    animation: inlineTextGlow 2s infinite alternate ease-in-out !important;
+}
+
+[data-theme="dark"] .navbar-brand span {
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   4. BỘ HIỆU ỨNG TỰ ĐỘNG PHÁT SÁNG MẶC ĐỊNH (KEYFRAMES)
+   ========================================================================== */
+@keyframes inlineGlow {
+    0% { filter: brightness(1) drop-shadow(0 0 2px rgba(48, 243, 67, 0.6)) !important; }
+    100% { filter: brightness(1.25) drop-shadow(0 0 12px #00ff88) drop-shadow(0 0 22px #0fe8e0) !important; }
+}
+
+@keyframes inlineTextGlow {
+    0% { text-shadow: 0 0 4px rgba(42, 122, 70, 0.3) !important; }
+    100% { text-shadow: 0 0 15px #2adb39, 0 0 25px #138352 !important; }
+}
+
+/* HOVER LOGO */
+.navbar-brand:hover {
+    transform: scale(1.05) !important; 
+}
+.navbar-brand:hover img {
+    animation-play-state: paused !important; 
+    filter: brightness(1.4) drop-shadow(0 0 15px #00d4ff) drop-shadow(0 0 35px #00ffcc) !important;
+    transform: rotate(4px) !important; 
+}
+.navbar-brand:hover span {
+    animation-play-state: paused !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 10px #00d4ff, 0 0 25px #00d4ff, 0 0 45px #00bdde !important;
+}
+.navbar-brand:active {
+    transform: scale(0.96) !important;
+    transition: transform 0.1s !important;
+}
+
+/* ==========================================================================
+   5. ĐIỀU CHỈNH MÀU CHỮ MENU ĐỂ KHÔNG BỊ TÀNG HÌNH (SỬA LỖI MẤT SÁNG)
+   ========================================================================== */
+
+/* Trạng thái chữ mặc định ở chế độ SÁNG */
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff !important; 
+    font-size: 16px !important;
+    font-weight: 600 !important;   
+    padding: 8px 18px !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5) !important; /* Đổ bóng nhẹ để rõ chữ trên nền sáng */
+    transition: all 0.2s ease !important; 
+}
+
+/* Trạng thái chữ mặc định ở chế độ TỐI (Xóa bóng đổ đen nặng để nhường chỗ cho Neon) */
+[data-theme="dark"] .navbar-nav .nav-item .nav-link {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.4) !important; /* Tạo một lớp neon mờ sẵn ở nền tối */
+}
+
+/* --- HIỆU ỨNG RÊ CHUỘT (HOVER) & ĐANG KÍCH HOẠT (ACTIVE) CHUNG CHO CẢ 2 CHẾ ĐỘ --- */
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link.active,
+[data-theme="dark"] .navbar-nav .nav-item .nav-link:hover,
+[data-theme="dark"] .navbar-nav .nav-item .nav-link.active {
+    color: #9ffa02 !important; /* Chuyển chữ sang màu xanh lá thương hiệu */
+    transform: translateY(-2px) !important; 
+    text-shadow: 
+        0 0 10px #9ffa02, 
+        0 0 25px rgba(159, 250, 2, 0.8) !important; /* Bừng sáng xanh lá rực rỡ */
+}
+
+/* --- HIỆU ỨNG NHẤN CLICK CHUỘT VÀO (ACTIVE VẬT LÝ) CHUNG CHO CẢ 2 CHẾ ĐỘ --- */
+.navbar-nav .nav-item .nav-link:active,
+[data-theme="dark"] .navbar-nav .nav-item .nav-link:active {
+    color: #00ffff !important; /* Chuyển hẳn sang màu xanh cyan rực rỡ khi nhấn giữ */
+    transform: scale(0.95) translateY(0px) !important; 
+    text-shadow: 
+        0 0 12px #00ffff,
+        0 0 30px #00ffff,
+        0 0 50px #00b4d8 !important; /* Hào quang Neon bùng nổ cực đại */
+}
+
+/* NÚT CHI TIẾT TRÊN MENU */
+.navbar-nav .btn-success {
+    border-radius: 20px !important; 
+    padding: 6px 20px !important;
+    font-weight: 600 !important;
+    background-color: #28a745 !important;
+    border: none !important;
+    box-shadow: 0 0 12px rgba(40, 167, 69, 0.4) !important; 
+    transition: all 0.2s ease !important;
+}
+.navbar-nav .btn-success:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 20px #28a745 !important; 
+}
+.navbar-nav .btn-success:active {
+    transform: scale(0.96) !important; 
+    box-shadow: 0 0 30px #28a745, 0 0 50px #9ffa02 !important; 
+}
+
+/* ==========================================================================
+   6. CSS NÚT BẤM SÁNG/TỐI (DỊCH CHUYỂN + PHÁT SÁNG NEON)
+   ========================================================================== */
+.theme-btn {
+    padding: 6px 18px;
+    cursor: pointer;
+    border: 2px solid var(--text-color) !important;
+    background: transparent !important;
+    color: var(--text-color) !important;
+    border-radius: 25px !important;
+    font-weight: bold;
+    font-size: 14px;
+    outline: none;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.theme-btn:hover {
+    transform: translateY(-4px); 
+    background-color: var(--btn-hover-bg) !important; 
+    color: var(--btn-hover-text) !important;          
+    border-color: var(--btn-hover-bg) !important;
+    box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3), 0 0 15px var(--glow-color); 
+}
+
+.theme-btn:active {
+    transform: translateY(-1px); 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15), 0 0 8px var(--glow-color);
+}
+
+/* ==========================================================================
+   7. HỆ THỐNG VIDEO NỀN & LỚP ĐỐM HẠT TRÔI ĐỘNG (ẢNH GỬI)
+   ========================================================================== */
+#bg-video {
+    position: fixed !important;
+    top: 0; left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    object-fit: cover !important; 
+    z-index: -2 !important;
+}
+
+/* Lớp phủ màn hình: Mờ nhẹ ở chế độ sáng, tối sâu ở chế độ tối */
+.overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(240,240,240,0.6) 100%) !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+    transition: background 0.3s ease;
+}
+
+[data-theme="dark"] .overlay {
+    background: linear-gradient(135deg, rgba(4, 237, 234, 0.2) 0%, rgba(12, 108, 218, 0.5) 100%) !important;
+}
+
+/* Tích hợp hiệu ứng hạt bụi trắng từ bức ảnh bạn cung cấp */
+body::after {
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" width="100" height="100"><circle cx="15" cy="15" r="1" fill="rgba(0,0,0,0.1)"/><circle cx="60" cy="40" r="1.2" fill="rgba(0,0,0,0.15)"/><circle cx="80" cy="80" r="0.8" fill="rgba(0,0,0,0.08)"/></svg>');
+    opacity: 0.7;
+    z-index: -1 !important;
+    pointer-events: none !important;
+    animation: moveStars 40s linear infinite !important;
+}
+
+[data-theme="dark"] body::after {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" width="100" height="100"><circle cx="15" cy="15" r="1" fill="rgba(255,255,255,0.15)"/><circle cx="60" cy="40" r="1.5" fill="rgba(255,255,255,0.2)"/><circle cx="80" cy="80" r="0.8" fill="rgba(255,255,255,0.1)"/></svg>');
+}
+
+@keyframes moveStars {
+    from { background-position: 0 0; }
+    from { background-position: 0 0; }
+    to { background-position: 0 -1000px; }
+}
+
+/* ==========================================================================
+   8. CẤU HÌNH BỘ LỌC TÌM KIẾM (FILTER BOX) & CARD ĐỊA ĐIỂM
+   ========================================================================== */
+
+/* Tiêu đề chính h1 ở chế độ sáng */
+h1 {
+    color: #222222 !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease;
+}
+
+/* Tiêu đề h1 bừng sáng hiệu ứng Neon ở chế độ tối */
+[data-theme="dark"] h1 {
+    color: #fdffff !important;
+    text-shadow: 
+        0 0 15px rgba(0, 255, 89, 0.7), 
+        0 0 30px rgba(0, 213, 255, 0.7) !important;
+}
+
+/* Form tìm kiếm & bộ lọc */
+form.bg-dark {
+    background-color: var(--form-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+/* Đổ bóng Neon cho Form khi ở chế độ tối */
+[data-theme="dark"] form.bg-dark {
+    box-shadow: var(--neon-glow) !important;
+}
+
+/* Ô nhập liệu và ô chọn vùng miền */
+form .form-control, 
+form .form-select {
+    background-color: var(--bg-color) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--form-text) !important;
+}
+
+/* Hiệu ứng tập trung (Focus) vào ô nhập liệu */
+form .form-control:focus, 
+form .form-select:focus {
+    border-color: #00d4ff !important;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5) !important;
+}
+
+/* Nút tìm kiếm mặc định */
+form .btn-primary {
+    background: linear-gradient(45deg, #00d4ff, #00ff88) !important;
+    border: none !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+    box-shadow: 0 4px 10px rgba(0, 212, 255, 0.2) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Nút tìm kiếm phát sáng mạnh khi hover chuột */
+form .btn-primary:hover {
+    transform: scale(1.03);
+    box-shadow: var(--neon-glow) !important;
+}
+
+/* Cấu hình thẻ card danh sách địa điểm du lịch */
+.card {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 15px !important;
+    overflow: hidden;
+    transition: 
+        transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+        box-shadow 0.4s ease, 
+        background-color 0.3s ease !important;
+}
+
+/* Hiệu ứng bay lên và bóng mờ nhẹ ở chế độ sáng */
+.card:hover {
+    transform: translateY(-10px) scale(1.02) !important;
+    box-shadow: 0 15px 30px rgba(0, 212, 255, 0.3) !important;
+}
+
+/* Hiệu ứng hào quang xanh phát sáng mạnh ở chế độ tối */
+[data-theme="dark"] .card:hover {
+    box-shadow: 0 15px 30px rgba(0, 212, 255, 0.6) !important;
+}
+
+/* Màu chữ tiêu đề và mô tả bên trong Card */
+.card-body h5 { 
+    color: var(--text-color) !important; 
+}
+.card-body p { 
+    color: var(--text-muted) !important; 
+}
+
+/* Nút xem chi tiết mặc định */
+.card .btn-outline-primary {
+    border: 2px solid #00d4ff !important;
+    color: #00d4ff !important;
+    font-weight: 600;
+    transition: all 0.3s ease !important;
+}
+
+/* Nút xem chi tiết chuyển nền xanh cyan phát sáng khi hover */
+.card .btn-outline-primary:hover {
+    background: #00d4ff !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 15px #00d4ff !important;
 }

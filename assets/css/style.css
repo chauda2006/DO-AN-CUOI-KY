@@ -183,7 +183,7 @@ body::after {
     content: "" !important;
     position: fixed !important;
     inset: 0 !important;
-    background: rgba(3, 10, 18, 0.64) !important;
+    background: rgba(3, 56, 117, 0) !important;
     z-index: -1 !important;
     pointer-events: none !important;
 }
@@ -345,13 +345,13 @@ body::after {
 /* ☀️ Mặc định: Chế độ sáng (Light Mode) */
 :root {
     --bg-color: #e9e5e5;          /* Nền chính của toàn trang */
-    --text-color: #fff8f8;        /* Chữ chính (Đen đậm dễ đọc) */
+    --text-color: #f8feff;        /* Chữ chính (Đen đậm dễ đọc) */
     --text-muted: #666666;        /* Chữ phụ (Xám nhạt cho ngày tháng, mô tả) */
     
-    --navbar-bg: rgba(255, 255, 255, 0.85); /* Nền menu trong suốt nhẹ */
-    --footer-bg: #f8f9fa;         /* Nền chân trang (Xám rất nhẹ) */
-    --card-bg: #ffffff;           /* Nền các thẻ sự kiện */
-    --border-color: #e0e0e0;      /* Màu đường viền, nét kẻ */
+    --navbar-bg: rgba(17, 255, 243, 0.85); /* Nền menu trong suốt nhẹ */
+    --footer-bg: #09fbff;         /* Nền chân trang (Xám rất nhẹ) */
+    --card-bg: #0790d4;           /* Nền các thẻ sự kiện */
+    --border-color: #1dd7f4;      /* Màu đường viền, nét kẻ */
     
     /* Màu sắc bổ trợ cho nút bấm phát sáng */
     --glow-color: rgba(0, 0, 0, 0); 
@@ -361,7 +361,7 @@ body::after {
 
 /* 🌙 Kích hoạt: Chế độ tối (Dark Mode) */
 [data-theme="dark"] {
-    --bg-color: #0f111a;          /* Nền tối sâu (Deep Dark Blue/Black) */
+    --bg-color: #ffffff;          /* Nền tối sâu (Deep Dark Blue/Black) */
     --text-color: #f0f2f5;        /* Chữ chính (Trắng sáng dịu mắt) */
     --text-muted: #a0aec0;        /* Chữ phụ (Xám xanh không bị lóa) */
     
@@ -373,7 +373,7 @@ body::after {
     /* Màu sắc bổ trợ cho nút bấm phát sáng chuyển sang hiệu ứng Neon */
     --glow-color: rgba(255, 255, 255, 0.6); 
     --btn-hover-bg: #ffffff;
-    --btn-hover-text: #0f111a;
+    --btn-hover-text: #43454e;
 }
 
 /* ==========================================================================
@@ -416,7 +416,7 @@ body {
 .event-card {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px rgb(255, 50, 50);
 }
 
 .event-card .title {
@@ -482,8 +482,8 @@ body {
 
 /* Mặc định ở chế độ SÁNG: Thanh menu sẽ có nền TRẮNG tinh tế */
 .cafe-navbar {
-    background-color: #ffffff !important; 
-    background: #ffffff !important; /* Xóa bỏ hoàn toàn dải màu gradient xanh tối cũ */
+    background-color: #18f8e1b5 !important; 
+    background: #13ccdaa9 !important; /* Xóa bỏ hoàn toàn dải màu gradient xanh tối cũ */
     border-bottom: 1px solid #e0e0e0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Tạo bóng đổ nhẹ cho sang trọng */
     transition: all 0.3s ease-in-out; /* Hiệu ứng chuyển màu mượt mà */
@@ -503,7 +503,7 @@ body {
 
 /* Ở chế độ SÁNG: Chữ menu phải là màu TỐI (Xám đậm/Đen) để nổi bật trên nền trắng */
 .cafe-navbar .navbar-nav .nav-link {
-    color: #09010cef !important;
+    color: #fffffffe !important;
     font-weight: 500;
     transition: color 0.3s ease;
 }
