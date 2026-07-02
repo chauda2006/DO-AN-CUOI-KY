@@ -83,8 +83,8 @@ $filteredDestinations = array_filter($destinations, function ($item) use ($keywo
     <link href="https://jsdelivr.net" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/destinations.css?v=1">
+   <link rel="stylesheet" href="assets/css/destinations.css?v=<?php echo filemtime('assets/css/destinations.css'); ?>">
+   <link rel="stylesheet" href="assets/css/destinations.css?v=1">
 </head>
 
 <body class="destination-page">

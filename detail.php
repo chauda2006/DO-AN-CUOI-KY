@@ -84,7 +84,8 @@ if ($currentDestination == null) {
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/destinations.css?v=<?php echo filemtime('assets/css/destinations.css'); ?>">
+   <link rel="stylesheet" href="assets/css/destinations.css?v=1">
 </head>
 
 <body class="destination-detail-page">
