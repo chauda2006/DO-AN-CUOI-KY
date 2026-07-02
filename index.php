@@ -50,8 +50,7 @@
         <div class="collapse navbar-collapse" id="mainMenu">
             <ul class="navbar-nav ms-auto align-items-lg-center">
                 <li class="nav-item"><a class="nav-link active" href="#">Trang chủ</a></li>
-                <li class="nav-item"><a class="nav-link" href="dichvu.html">Dịch vụ</a></li>
-                <li class="nav-item"><a class="nav-link" href="gioithieu.html">Giới thiệu</a></li>
+                <li class="nav-item"><a class="nav-link" href="destinations.php">Điểm đến</a></li>
                 <li class="nav-item"><a class="nav-link" href="lienhe.html">Liên hệ</a></li>
                 <li class="nav-item ms-lg-3">
                     
