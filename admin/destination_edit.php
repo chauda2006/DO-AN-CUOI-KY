@@ -20,7 +20,54 @@ $stmt = $pdo->query($sql);
 $categories = $stmt->fetchAll();
 
 $error = "";
-?>
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $title = trim($_POST["title"]);
+    $category_id = $_POST["category_id"];
+    $location = trim($_POST["location"]);
+    $price = trim($_POST["price"]);
+    $description = trim($_POST["description"]);
+
+    if ($title == "" || $location == "" || $price == "") {
+        $error = "Vui lòng nhập đầy đủ thông tin.";
+    } else {
+
+        $image = $destination["image"];
+
+        if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
+
+            $image = time() . "_" . $_FILES["image"]["name"];
+            $target = "../assets/images/" . $image;
+
+            move_uploaded_file($_FILES["image"]["tmp_name"], $target);
+        }
+
+        $sql = "UPDATE destinations
+                SET category_id = ?,
+                    title = ?,
+                    location = ?,
+                    description = ?,
+                    image = ?,
+                    price = ?
+                WHERE id = ?";
+
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->execute([
+            $category_id,
+            $title,
+            $location,
+            $description,
+            $image,
+            $price,
+            $id
+        ]);
+
+        header("Location: destinations.php?msg=Cập nhật địa điểm thành công");
+        exit;
+    }
+}?>
 
 <!DOCTYPE html>
 <html lang="vi">
