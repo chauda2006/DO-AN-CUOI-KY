@@ -40,6 +40,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $image = time() . "_" . $_FILES["image"]["name"];
             $target = "../assets/images/" . $image;
 
+            if ($destination["image"] != "" && file_exists("../assets/images/" . $destination["image"])) 
+                {
+                    unlink("../assets/images/" . $destination["image"]);
+                }
+
             move_uploaded_file($_FILES["image"]["tmp_name"], $target);
         }
 
