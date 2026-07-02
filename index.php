@@ -35,7 +35,7 @@
     <!-- Đã chuyển cấu hình kích thước và ép thêm hiệu ứng phát sáng trực tiếp vào style -->
     <img src="assets/images/logo.png" alt="Logo" style="height:50px; margin-right:10px; transition: all 0.3s ease; animation: inlineGlow 2s infinite alternate ease-in-out;">
     <div>
-        <span class="brand-name" style="transition: all 0.3s ease; animation: inlineTextGlow 2s infinite alternate ease-in-out;">Maid Royal</span><br>
+        <span class="brand-name" style="transition: all 0.3s ease; animation: inlineTextGlow 2s infinite alternate ease-in-out;">Royal Vietnam Guide</span><br>
         <small class="brand-sub" style="color: #ffffff !important; opacity: 0.85; font-size: 11px;">Du lịch với chúng tôi</small>
     </div>
 </a>
@@ -79,14 +79,13 @@
 <!-- HIỆU ỨNG -->
 
 <div class="stars stars1"></div>
-<div class="stars stars2"></div>
 <div class="stars stars3"></div>
 
 <!-- NỘI DUNG -->
 
 <div class="content text-center text-white">
-    <h1>Chào mừng đến với dịch vụ du lịch</h1>
-    <p>hãy đến với chúng tôi</p>
+    <h1>Đẳng cấp hành trình - Nâng tầm trải nghiệm</h1>
+    <p>Đi để thấy - Đi để yêu Việt Nam hơn</p>
 </div>
 
 <!-- GIỚI THIỆU -->
@@ -94,8 +93,7 @@
 <section id="gioithieu" class="gioithieu container mt-5">
     <h2>Giới thiệu</h2>
     <p>
-        Tech Ocean là một sự kiện công nghệ sáng tạo, nơi hội tụ những ý tưởng tiên tiến nhằm kết nối giữa công nghệ hiện đại và việc bảo vệ đại dương...
-    </p>
+        Đề tài "Website giới thiệu và quản lý địa điểm du lịch Việt Nam" được xây dựng nhằm cung cấp cho người dùng thông tin về các địa điểm du lịch nổi tiếng trên khắp Việt Nam. Website cho phép người dùng xem danh sách, tìm kiếm, lọc theo vùng miền hoặc loại hình, đồng thời xem thông tin chi tiết của từng địa điểm. Bên cạnh đó, hệ thống còn có trang quản trị (Admin) với các chức năng đăng nhập, thêm, sửa, xóa và quản lý dữ liệu địa điểm du lịch (CRUD). Đề tài hướng đến việc xây dựng một website có giao diện thân thiện, dễ sử dụng, hỗ trợ hiển thị trên nhiều thiết bị và đáp ứng tốt nhu cầu tra cứu thông tin du lịch.</p>
 </section>
 
 <footer class="footer bg-dark text-white p-4 mt-5">

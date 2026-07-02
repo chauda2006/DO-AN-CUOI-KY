@@ -17,6 +17,9 @@ body {
     overflow-x: hidden;
 }
 
+
+
+
 /* ========================================================
    THANH MENU NAVBAR BOOTSTRAP (Cấu hình đè thư viện gốc)
    ======================================================== */
@@ -191,7 +194,7 @@ body::after {
     inset: 0 !important;
     width: 100% !important;
     height: 200% !important;
-    background: url("https://transparenttextures.com") !important;
+    background: #0206171f url("https://www.transparenttextures.com/patterns/stardust.png");
     z-index: 0 !important;
     pointer-events: none !important;
 }
@@ -233,8 +236,8 @@ body::after {
     font-weight: 700;
     margin-bottom: 25px;
     text-shadow: 
-        0 0 15px #00d4ff,
-        0 0 30px #00d4ff !important;
+        0 0 15px #00ff59b3,
+        0 0 30px #00d5ffb9 !important;
 }
 
 .content p {
@@ -266,7 +269,7 @@ body::after {
 /* Khối chân trang Footer */
 .footer {
     width: 100%;
-    background: rgba(4, 12, 18, 0.95) !important;
+    background: rgba(4, 12, 18, 0.533) !important;
     padding: 60px 20px !important;
     margin-top: 80px;
     border-top: 3px solid rgb(10, 208, 239);
@@ -351,8 +354,8 @@ body::after {
     --border-color: #e0e0e0;      /* Màu đường viền, nét kẻ */
     
     /* Màu sắc bổ trợ cho nút bấm phát sáng */
-    --glow-color: rgba(0, 0, 0, 0.2); 
-    --btn-hover-bg: #222222;
+    --glow-color: rgba(0, 0, 0, 0); 
+    --btn-hover-bg: #22222200;
     --btn-hover-text: #ffffff;
 }
 
@@ -463,7 +466,7 @@ body {
     color: var(--btn-hover-text);          /* Đổi màu chữ/icon bên trong nút */
     
     /* Tạo hiệu ứng đổ bóng phát sáng (Glow Effect) lan tỏa ra xung quanh */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 
+    box-shadow: 0 10px 20px rgba(53, 110, 126, 0.792), 
                 0 0 15px var(--glow-color); 
 }
 
@@ -488,10 +491,10 @@ body {
 
 /* Khi bấm nút chuyển sang chế độ TỐI: Thanh menu tự động chuyển sang màu ĐEN/TỐI */
 [data-theme="dark"] .cafe-navbar {
-    background-color: #161925 !important; 
-    background: #161925 !important; 
+    background-color: #161925c2 !important; 
+    background: #161925a5 !important; 
     border-bottom: 1px solid #2d3142;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(235, 235, 235, 0.3);
 }
 
 /* ==========================================================================
@@ -500,7 +503,7 @@ body {
 
 /* Ở chế độ SÁNG: Chữ menu phải là màu TỐI (Xám đậm/Đen) để nổi bật trên nền trắng */
 .cafe-navbar .navbar-nav .nav-link {
-    color: #000000 !important;
+    color: #09010cef !important;
     font-weight: 500;
     transition: color 0.3s ease;
 }
@@ -513,5 +516,5 @@ body {
 /* Riêng nút đang kích hoạt (Active) hoặc khi di chuột vào (Hover) */
 .cafe-navbar .navbar-nav .nav-link:hover,
 .cafe-navbar .navbar-nav .nav-link.active {
-    color: #02fa86 !important; /* Giữ màu xanh lá làm điểm nhấn thương hiệu */
+    color: #9ffa02 !important; /* Giữ màu xanh lá làm điểm nhấn thương hiệu */
 }
