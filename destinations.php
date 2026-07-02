@@ -68,11 +68,25 @@ $filteredDestinations = array_filter($destinations, function ($item) use ($keywo
     return $matchKeyword && $matchRegion;
 });
 ?>
-
 <!DOCTYPE html>
 <html lang="vi">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách địa điểm du lịch</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/destinations.css?v=1">
+</head>
+
 <body class="destination-page">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
